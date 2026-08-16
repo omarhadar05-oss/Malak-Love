@@ -4,104 +4,849 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>إلى ملاك ❤️</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,sans-serif;background:#fff1f6;color:#442333;overflow-x:hidden}
-.lock{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ffe3ee,#fff8fb);z-index:20;padding:24px}
-.card{width:min(430px,100%);background:#fff;border-radius:28px;padding:30px 22px;text-align:center;box-shadow:0 18px 60px #c65d8a33}
-.heart{font-size:52px}.card h1{margin:8px 0;font-size:28px}.card p{color:#8b6274}
-.pin{font-size:30px;letter-spacing:12px;text-align:center;width:100%;border:0;border-bottom:2px solid #f19abb;outline:0;padding:12px;background:transparent;color:#442333}
-.unlock{margin-top:20px;border:0;border-radius:999px;background:#ef6f9f;color:#fff;font-size:18px;font-weight:700;padding:13px 30px}
-.err{height:24px;color:#d44a78;margin-top:8px}
-.site{display:none}.hero{text-align:center;padding:70px 20px 35px;background:radial-gradient(circle at 50% 0,#ffd7e7,transparent 60%)}
-.hero h1{font-size:42px;margin:10px 0;color:#d95386}.hero p{font-size:19px;line-height:1.9;max-width:680px;margin:auto}
-.yesno{margin:25px auto 50px;display:flex;gap:18px;justify-content:center;align-items:center;min-height:90px}
-.btn{border:0;border-radius:999px;padding:14px 30px;font-size:18px;font-weight:800;cursor:pointer;transition:.18s}
-.yes{background:#ef6f9f;color:#fff}.no{background:#fff;color:#d95386;border:2px solid #efb0c7}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;max-width:1050px;margin:0 auto;padding:20px}
-.gallery img{width:100%;height:330px;object-fit:cover;border-radius:22px;box-shadow:0 8px 30px #9b416622}
-.message{max-width:700px;margin:45px auto;padding:30px 24px;background:#fff;border-radius:28px;box-shadow:0 10px 35px #9b41661c;text-align:center;font-size:20px;line-height:2}
-footer{text-align:center;padding:45px 20px;color:#9a6b7e}
-#hearts{position:fixed;inset:0;pointer-events:none;z-index:10}
-.float{position:absolute;animation:up 4s linear forwards;font-size:24px}
-@keyframes up{from{transform:translateY(0);opacity:1}to{transform:translateY(-110vh);opacity:0}}
-</style>
-</head>
-<body>
-<div class="lock" id="lock">
-  <div class="card">
-    <div class="heart">💗</div>
-    <h1>عندك رسالة خاصة</h1>
-    <p>دخلي الرقم السري عشان تفتحيها 🌷</p>
-    <input id="pin" class="pin" inputmode="numeric" maxlength="4" placeholder="••••" aria-label="الرقم السري">
-    <button class="unlock" onclick="unlock()">فتح الرسالة ❤️</button>
-    <div id="err" class="err"></div>
-  </div>
-</div>
 
-<main class="site" id="site">
-  <section class="hero">
-    <div style="font-size:55px">🌷❤️</div>
-    <h1>إلى ملاك</h1>
-    <p>بغيت نقولك يا ملاك أنا كنبغيك بزاف، وبغيت نقولك إن شاء الله ربي يطوّل بيناتنا عمرنا وما نبعدو على بعضياتنا ❤️</p>
-    <p>باباتك كيبغيك ❤️🌷</p>
-  </section>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,sans-serif;
+  background:#fff1f6;
+  color:#442333;
+  overflow-x:hidden;
+}
 
-  <section class="message">
-    <div style="font-size:40px">💌</div>
-    <div>مهما كبرت المسافة، قلبي ديما قريب منك.<br>وإن شاء الله تبقى ضحكتك أجمل حاجة في أيامي.</div>
-    <div class="yesno">
-      <button class="btn yes" id="yes">YES ❤️</button>
-      <button class="btn no" id="no">NO</button>
-    </div>
-    <div id="reply" style="font-weight:800;color:#d95386;min-height:32px"></div>
-  </section>
+/* ---------- القفل ---------- */
 
-  <section class="gallery">
-    <img src="images/image1.jpeg" alt="صورة">
-    <img src="images/image2.jpeg" alt="صورة">
-    <img src="images/image3.jpeg" alt="صورة">
-    <img src="images/image4.jpeg" alt="صورة">
-    <img src="images/image5.jpeg" alt="صورة">
-    <img src="images/image6.jpeg" alt="صورة">
-    <img src="images/image7.jpeg" alt="صورة">
-    <img src="images/image8.jpeg" alt="صورة">
-  </section>
-  <footer>صُنعت بحب ❤️</footer>
-</main>
-<div id="hearts"></div>
+.lock{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#ffe3ee,#fff8fb);
+  z-index:50;
+  padding:24px;
+}
 
-<script>
-function unlock(){
-  const p=document.getElementById('pin').value;
-  const e=document.getElementById('err');
-  if(p==="1614"){
-    document.getElementById('lock').style.display="none";
-    document.getElementById('site').style.display="block";
-  }else{
-    e.textContent="الرقم مو صحيح 😭❤️";
-    document.getElementById('pin').value="";
+.card{
+  width:min(430px,100%);
+  background:#fff;
+  border-radius:28px;
+  padding:30px 22px;
+  text-align:center;
+  box-shadow:0 18px 60px #c65d8a33;
+}
+
+.heart{
+  font-size:52px;
+}
+
+.card h1{
+  margin:8px 0;
+  font-size:28px;
+}
+
+.card p{
+  color:#8b6274;
+}
+
+.pin{
+  font-size:30px;
+  letter-spacing:12px;
+  text-align:center;
+  width:100%;
+  border:0;
+  border-bottom:2px solid #f19abb;
+  outline:0;
+  padding:12px;
+  background:transparent;
+  color:#442333;
+}
+
+.unlock{
+  margin-top:20px;
+  border:0;
+  border-radius:999px;
+  background:#ef6f9f;
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+  padding:13px 30px;
+}
+
+.err{
+  height:24px;
+  color:#d44a78;
+  margin-top:8px;
+}
+
+/* ---------- الصفحات ---------- */
+
+.page{
+  display:none;
+  min-height:100vh;
+  padding:40px 20px;
+}
+
+.page.active{
+  display:block;
+}
+
+.center{
+  text-align:center;
+  max-width:900px;
+  margin:auto;
+}
+
+/* ---------- سؤال واش كتبغيني ---------- */
+
+.question{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+}
+
+.question-box{
+  background:white;
+  border-radius:30px;
+  padding:45px 25px;
+  width:min(500px,100%);
+  box-shadow:0 15px 50px #9b416622;
+}
+
+.question-box h1{
+  font-size:38px;
+  color:#d95386;
+  margin:15px 0;
+}
+
+.question-box p{
+  font-size:18px;
+  color:#8b6274;
+}
+
+.yesno{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-top:30px;
+}
+
+.btn{
+  border:0;
+  border-radius:999px;
+  padding:15px 32px;
+  font-size:18px;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.yes{
+  background:#ef6f9f;
+  color:white;
+}
+
+.no{
+  background:white;
+  color:#d95386;
+  border:2px solid #efb0c7;
+}
+
+#reply{
+  margin-top:20px;
+  color:#d95386;
+  font-weight:800;
+  min-height:30px;
+}
+
+/* ---------- صفحة الهدايا ---------- */
+
+.gifts{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.gift-container{
+  width:min(950px,100%);
+}
+
+.gift-title{
+  text-align:center;
+  color:#d95386;
+  font-size:35px;
+  margin-bottom:45px;
+}
+
+.gift-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+}
+
+.gift{
+  width:30%;
+  min-height:190px;
+  border:0;
+  border-radius:30px;
+  background:white;
+  box-shadow:0 15px 40px #9b416622;
+  cursor:pointer;
+  transition:.25s;
+  color:#442333;
+  padding:25px 15px;
+}
+
+.gift:hover{
+  transform:translateY(-10px) rotate(-1deg);
+  box-shadow:0 20px 50px #9b416633;
+}
+
+.gift-icon{
+  font-size:60px;
+}
+
+.gift h2{
+  margin:12px 0 5px;
+  color:#d95386;
+}
+
+.gift p{
+  margin:0;
+  color:#9a6b7e;
+}
+
+/* ---------- الصفحات الداخلية ---------- */
+
+.inner-title{
+  text-align:center;
+  color:#d95386;
+  font-size:36px;
+  margin-bottom:35px;
+}
+
+.back{
+  display:block;
+  margin:35px auto 0;
+  border:0;
+  border-radius:999px;
+  padding:12px 25px;
+  background:#fff;
+  color:#d95386;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 5px 20px #9b416622;
+}
+
+/* ---------- الصور ---------- */
+
+.photo-grid{
+  max-width:950px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:25px;
+}
+
+.photo{
+  background:white;
+  padding:10px 10px 28px;
+  box-shadow:0 10px 30px #9b416633;
+  transform:rotate(var(--r));
+  border-radius:3px;
+}
+
+.photo img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+  display:block;
+}
+
+/* ---------- صفحة الأغنية ---------- */
+
+.music-page{
+  position:relative;
+  overflow:hidden;
+}
+
+.music-area{
+  position:relative;
+  max-width:900px;
+  min-height:650px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.song-box{
+  width:min(560px,90%);
+  background:white;
+  padding:18px;
+  border-radius:25px;
+  box-shadow:0 18px 55px #9b416633;
+  position:relative;
+  z-index:5;
+}
+
+.song-box iframe{
+  width:100%;
+  height:315px;
+  border:0;
+  border-radius:18px;
+}
+
+.song-name{
+  text-align:center;
+  font-weight:800;
+  color:#d95386;
+  font-size:20px;
+  margin-top:15px;
+}
+
+/* الصور حول الأغنية */
+
+.music-photo{
+  position:absolute;
+  width:115px;
+  background:white;
+  padding:7px 7px 18px;
+  box-shadow:0 10px 25px #9b416644;
+  z-index:2;
+}
+
+.music-photo img{
+  width:100%;
+  height:125px;
+  object-fit:cover;
+}
+
+.m1{top:20px;left:8%;transform:rotate(-10deg)}
+.m2{top:80px;right:6%;transform:rotate(9deg)}
+.m3{bottom:55px;left:5%;transform:rotate(8deg)}
+.m4{bottom:25px;right:9%;transform:rotate(-8deg)}
+.m5{top:5px;left:40%;transform:rotate(5deg)}
+.m6{bottom:5px;right:40%;transform:rotate(-5deg)}
+
+@media(max-width:650px){
+
+  .gift-row{
+    flex-direction:column;
+  }
+
+  .gift{
+    width:90%;
+  }
+
+  .music-area{
+    min-height:700px;
+  }
+
+  .music-photo{
+    width:75px;
+  }
+
+  .music-photo img{
+    height:85px;
+  }
+
+  .m1{top:15px;left:3%}
+  .m2{top:70px;right:3%}
+  .m3{bottom:80px;left:2%}
+  .m4{bottom:50px;right:3%}
+  .m5{top:5px;left:38%}
+  .m6{bottom:10px;right:38%}
+
+  .song-box iframe{
+    height:240px;
   }
 }
-document.getElementById('pin').addEventListener('keydown',e=>{if(e.key==="Enter")unlock()});
 
-const no=document.getElementById('no'), yes=document.getElementById('yes'), reply=document.getElementById('reply');
-let scale=1;
-no.addEventListener('click',()=>{
-  scale=Math.min(scale+0.28,5);
-  yes.style.transform=`scale(${scale})`;
-  no.style.transform=`scale(${Math.max(.45,1-(scale-1)*.13)})`;
-  reply.textContent="لا لا 😭 اضغطي YES ❤️";
-});
-yes.addEventListener('click',()=>{
-  reply.textContent="كنت عارف إنك بتختارين YES 😭❤️🌷";
-  for(let i=0;i<28;i++) setTimeout(spawnHeart,i*45);
-});
-function spawnHeart(){
-  const h=document.createElement('div');h.className='float';h.textContent=['❤️','💗','💕','🌷'][Math.floor(Math.random()*4)];
-  h.style.left=Math.random()*100+'vw';h.style.bottom='-30px';h.style.fontSize=(18+Math.random()*24)+'px';
-  document.getElementById('hearts').appendChild(h);setTimeout(()=>h.remove(),4100);
+/* ---------- الرسالة ---------- */
+
+.letter{
+  max-width:700px;
+  margin:auto;
+  background:white;
+  padding:40px 28px;
+  border-radius:30px;
+  box-shadow:0 15px 50px #9b416622;
+  font-size:20px;
+  line-height:2.1;
+  text-align:center;
 }
+
+.letter .emoji{
+  font-size:55px;
+  margin-bottom:10px;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:#9a6b7e;
+}
+
+/* ---------- القلوب ---------- */
+
+#hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:100;
+}
+
+.float{
+  position:absolute;
+  animation:up 4s linear forwards;
+  font-size:24px;
+}
+
+@keyframes up{
+  from{
+    transform:translateY(0);
+    opacity:1;
+  }
+  to{
+    transform:translateY(-110vh);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= القفل ================= -->
+
+<div class="lock" id="lock">
+
+  <div class="card">
+
+    <div class="heart">💗</div>
+
+    <h1>عندك رسالة خاصة</h1>
+
+    <p>دخلي الرقم السري عشان تفتحيها 🌷</p>
+
+    <input
+      id="pin"
+      class="pin"
+      inputmode="numeric"
+      maxlength="4"
+      placeholder="••••"
+    >
+
+    <button class="unlock" onclick="unlock()">
+      فتح الرسالة ❤️
+    </button>
+
+    <div id="err" class="err"></div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= السؤال ================= -->
+
+<section class="page question" id="questionPage">
+
+  <div class="question-box center">
+
+    <div style="font-size:60px">❤️</div>
+
+    <h1>واش كتحبيني؟</h1>
+
+    <p>جاوبيني بصراحة... 😭❤️</p>
+
+    <div class="yesno">
+
+      <button class="btn yes" id="yes">
+        YES ❤️
+      </button>
+
+      <button class="btn no" id="no">
+        NO 😭
+      </button>
+
+    </div>
+
+    <div id="reply"></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= الهدايا ================= -->
+
+<section class="page gifts" id="giftsPage">
+
+  <div class="gift-container">
+
+    <h1 class="gift-title">
+      عندك ثلاث هدايا 🎁❤️
+    </h1>
+
+    <div class="gift-row">
+
+      <!-- اليسار -->
+      <button class="gift" onclick="showPage('photosPage')">
+
+        <div class="gift-icon">📸</div>
+
+        <h2>صورنا</h2>
+
+        <p>ذكرياتنا ❤️</p>
+
+      </button>
+
+
+      <!-- الوسط -->
+      <button class="gift" onclick="showPage('musicPage')">
+
+        <div class="gift-icon">🎵</div>
+
+        <h2>أغنيتنا</h2>
+
+        <p>أغنية تذكرني فيك 🎶</p>
+
+      </button>
+
+
+      <!-- اليمين -->
+      <button class="gift" onclick="showPage('letterPage')">
+
+        <div class="gift-icon">💌</div>
+
+        <h2>رسالتي</h2>
+
+        <p>شي من قلبي ليك ❤️</p>
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= صفحة الصور ================= -->
+
+<section class="page" id="photosPage">
+
+  <div class="center">
+
+    <h1 class="inner-title">
+      ذكرياتنا 📸❤️
+    </h1>
+
+    <div class="photo-grid">
+
+      <div class="photo" style="--r:-3deg">
+        <img src="images/image1.jpeg">
+      </div>
+
+      <div class="photo" style="--r:3deg">
+        <img src="images/image2.jpeg">
+      </div>
+
+      <div class="photo" style="--r:-2deg">
+        <img src="images/image3.jpeg">
+      </div>
+
+      <div class="photo" style="--r:4deg">
+        <img src="images/image4.jpeg">
+      </div>
+
+      <div class="photo" style="--r:-4deg">
+        <img src="images/image5.jpeg">
+      </div>
+
+      <div class="photo" style="--r:2deg">
+        <img src="images/image6.jpeg">
+      </div>
+
+      <div class="photo" style="--r:-2deg">
+        <img src="images/image7.jpeg">
+      </div>
+
+      <div class="photo" style="--r:3deg">
+        <img src="images/image8.jpeg">
+      </div>
+
+    </div>
+
+    <button class="back" onclick="showPage('giftsPage')">
+      ← رجوع للهدايا
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= صفحة الأغنية ================= -->
+
+<section class="page music-page" id="musicPage">
+
+  <h1 class="inner-title">
+    أغنيتنا 🎵❤️
+  </h1>
+
+  <div class="music-area">
+
+    <!-- صور حول الأغنية -->
+
+    <div class="music-photo m1">
+      <img src="images/image1.jpeg">
+    </div>
+
+    <div class="music-photo m2">
+      <img src="images/image2.jpeg">
+    </div>
+
+    <div class="music-photo m3">
+      <img src="images/image3.jpeg">
+    </div>
+
+    <div class="music-photo m4">
+      <img src="images/image4.jpeg">
+    </div>
+
+    <div class="music-photo m5">
+      <img src="images/image5.jpeg">
+    </div>
+
+    <div class="music-photo m6">
+      <img src="images/image6.jpeg">
+    </div>
+
+
+    <!-- الأغنية -->
+
+    <div class="song-box">
+
+      <iframe
+        src="https://www.youtube.com/embed/ZvlzB5gUD-g"
+        title="أغنيتنا"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+      <div class="song-name">
+        الأغنية اللي اخترتها ليك ❤️🎶
+      </div>
+
+    </div>
+
+  </div>
+
+  <button class="back" onclick="showPage('giftsPage')">
+    ← رجوع للهدايا
+  </button>
+
+</section>
+
+
+<!-- ================= صفحة الرسالة ================= -->
+
+<section class="page" id="letterPage">
+
+  <div class="center">
+
+    <h1 class="inner-title">
+      رسالة ليك 💌
+    </h1>
+
+    <div class="letter">
+
+      <div class="emoji">💌🌷</div>
+
+      ملاك ❤️
+
+      <br><br>
+
+      بغيت غير نقولك بلي كنبغيك بزاف، ويمكن ما كنعرفش ديما نعبر ليك على كلشي اللي كاين فقلبي، ولكن نتي عندك بلاصة كبيرة عندي وماشي أي وحدة تقدر تاخدها.
+
+      <br><br>
+
+      كيعجبني فيك كلشي، ضحكتك، طريقتك، وحتى التفاصيل الصغيرة اللي يمكن نتي ما كتعطيهاش أهمية، أنا كنبقى نتفكرها.
+
+      <br><br>
+
+      وبغيت نبقى ديما حدّاك، نفرح معاك ونوقف معاك فكل وقت، وإن شاء الله ربي يطول لينا فالعمر ونبقاو ديما مجموعين وما يفرق بيناتنا والو.
+
+      <br><br>
+
+      المهم... بغيتك تعرفي غير حاجة وحدة:
+
+      <br>
+
+      <strong>
+        كنبغيك بزاف بزاف، ونتي بالنسبة ليا ماشي شي وحدة عادية ❤️
+      </strong>
+
+      <br><br>
+
+      ديما ديالك ❤️🌷
+
+    </div>
+
+    <button class="back" onclick="showPage('giftsPage')">
+      ← رجوع للهدايا
+    </button>
+
+  </div>
+
+  <footer>
+    صُنعت بحب ❤️
+  </footer>
+
+</section>
+
+
+<div id="hearts"></div>
+
+
+<script>
+
+/* ================= فتح القفل ================= */
+
+function unlock(){
+
+  const pin = document.getElementById("pin").value;
+
+  const err = document.getElementById("err");
+
+  if(pin === "1614"){
+
+    document.getElementById("lock").style.display = "none";
+
+    showPage("questionPage");
+
+  }else{
+
+    err.textContent = "الرقم مو صحيح 😭❤️";
+
+    document.getElementById("pin").value = "";
+
+  }
+
+}
+
+
+/* Enter لفتح القفل */
+
+document.getElementById("pin").addEventListener("keydown",function(e){
+
+  if(e.key === "Enter"){
+    unlock();
+  }
+
+});
+
+
+/* ================= التنقل بين الصفحات ================= */
+
+function showPage(id){
+
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* ================= سؤال YES / NO ================= */
+
+const yes = document.getElementById("yes");
+
+const no = document.getElementById("no");
+
+const reply = document.getElementById("reply");
+
+let scale = 1;
+
+
+/* زر NO */
+
+no.addEventListener("click",()=>{
+
+  scale = Math.min(scale + 0.3,5);
+
+  yes.style.transform = `scale(${scale})`;
+
+  no.style.transform =
+    `scale(${Math.max(.45,1-(scale-1)*.13)})`;
+
+  reply.textContent = "لااا 😭 اضغطي YES ❤️";
+
+});
+
+
+/* زر YES */
+
+yes.addEventListener("click",()=>{
+
+  for(let i=0;i<35;i++){
+
+    setTimeout(spawnHeart,i*40);
+
+  }
+
+  setTimeout(()=>{
+
+    showPage("giftsPage");
+
+  },700);
+
+});
+
+
+/* ================= القلوب ================= */
+
+function spawnHeart(){
+
+  const h = document.createElement("div");
+
+  h.className = "float";
+
+  h.textContent =
+    ["❤️","💗","💕","🌷","💖"]
+    [Math.floor(Math.random()*5)];
+
+  h.style.left = Math.random()*100 + "vw";
+
+  h.style.bottom = "-30px";
+
+  h.style.fontSize =
+    (18 + Math.random()*25) + "px";
+
+  document.getElementById("hearts").appendChild(h);
+
+  setTimeout(()=>{
+    h.remove();
+  },4100);
+
+}
+
 </script>
+
 </body>
 </html>
