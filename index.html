@@ -6,7 +6,10 @@
 <title>Malak ❤️</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
 
 html,body{
   margin:0;
@@ -15,8 +18,11 @@ html,body{
 
 body{
   font-family:Arial,Tahoma,sans-serif;
-  background:linear-gradient(135deg,#fff0f6,#ffe1ed);
-  color:#4b2637;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,100,175,.18),transparent 25%),
+    radial-gradient(circle at 90% 90%,rgba(255,190,220,.1),transparent 30%),
+    linear-gradient(135deg,#08080c,#151018 50%,#09090d);
+  color:#fff;
   overflow-x:hidden;
 }
 
@@ -25,102 +31,116 @@ button{
   cursor:pointer;
 }
 
+/* =========================
+   BACKGROUND DECOR
+========================= */
+
+.bg-bat{
+  position:fixed;
+  z-index:0;
+  color:#000;
+  opacity:.25;
+  font-size:75px;
+  pointer-events:none;
+  filter:drop-shadow(0 0 8px rgba(255,70,160,.15));
+}
+
+.b1{
+  top:8%;
+  left:3%;
+  transform:rotate(-15deg);
+}
+
+.b2{
+  bottom:9%;
+  right:4%;
+  transform:rotate(15deg);
+}
+
+.bg-bow{
+  position:fixed;
+  z-index:0;
+  color:#ff65a8;
+  font-size:55px;
+  opacity:.25;
+  pointer-events:none;
+}
+
+.bo1{
+  top:18%;
+  right:4%;
+}
+
+.bo2{
+  bottom:18%;
+  left:4%;
+}
+
+.float-heart{
+  position:fixed;
+  z-index:1;
+  color:#ff65a8;
+  pointer-events:none;
+  font-size:24px;
+  animation:float 4s ease-in-out infinite;
+  text-shadow:0 0 15px rgba(255,80,160,.7);
+}
+
+.fh1{left:12%;top:35%}
+.fh2{right:12%;top:55%;animation-delay:1s}
+.fh3{left:25%;bottom:20%;animation-delay:2s}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0);
+    opacity:.45;
+  }
+  50%{
+    transform:translateY(-15px);
+    opacity:1;
+  }
+}
+
+/* =========================
+   PAGES
+========================= */
+
 .page{
   display:none;
   min-height:100vh;
-  padding:25px 18px 40px;
+  padding:25px 18px 50px;
   position:relative;
+  z-index:2;
 }
 
 .page.active{
   display:block;
 }
 
-.center{
-  width:min(900px,100%);
-  margin:auto;
-  text-align:center;
-}
-
 .title{
-  color:#d95787;
   text-align:center;
-  font-size:34px;
-  margin:15px 0 35px;
+  color:#ff72ae;
+  font-size:38px;
+  margin:15px 0 40px;
+  text-shadow:0 0 20px rgba(255,70,160,.4);
 }
 
 .back{
   display:block;
   margin:35px auto 10px;
-  border:0;
-  background:#fff;
-  color:#d95787;
-  padding:12px 28px;
+  border:1px solid rgba(255,105,180,.3);
+  background:rgba(255,255,255,.06);
+  color:#ff82b7;
+  padding:13px 30px;
   border-radius:50px;
   font-weight:bold;
-  box-shadow:0 8px 25px rgba(160,60,100,.15);
+  backdrop-filter:blur(10px);
+  transition:.25s;
 }
 
-/* =========================
-   DECORATIONS
-========================= */
-
-.sticker{
-  position:fixed;
-  z-index:3;
-  pointer-events:none;
-  filter:drop-shadow(0 7px 10px rgba(80,30,60,.15));
-}
-
-.sticker img{
-  width:100%;
-  display:block;
-}
-
-.kitty-left{
-  width:100px;
-  left:5px;
-  bottom:18px;
-  transform:rotate(-7deg);
-}
-
-.kitty-right{
-  width:95px;
-  right:5px;
-  top:85px;
-  transform:rotate(7deg);
-}
-
-.batman-left{
-  width:105px;
-  left:4px;
-  top:65px;
-  transform:rotate(-6deg);
-}
-
-.batman-right{
-  width:105px;
-  right:4px;
-  bottom:18px;
-  transform:rotate(6deg);
-}
-
-.float-heart{
-  position:fixed;
-  z-index:2;
-  color:#f27aa5;
-  font-size:25px;
-  pointer-events:none;
-  animation:float 4s ease-in-out infinite;
-}
-
-.fh1{left:8%;top:30%}
-.fh2{right:8%;top:48%;animation-delay:1s}
-.fh3{left:18%;bottom:25%;animation-delay:2s}
-
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
+.back:hover{
+  transform:translateY(-3px);
+  background:rgba(255,105,180,.12);
 }
 
 /* =========================
@@ -135,57 +155,105 @@ button{
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:linear-gradient(135deg,#ffe0ec,#fff8fb);
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,90,170,.2),transparent 30%),
+    linear-gradient(135deg,#07070a,#171019);
 }
 
 .lock-box{
-  width:min(420px,100%);
-  background:white;
-  border-radius:30px;
-  padding:35px 25px;
+  width:min(430px,100%);
+  position:relative;
+  overflow:hidden;
   text-align:center;
-  box-shadow:0 20px 60px rgba(170,70,110,.2);
+  padding:38px 25px;
+  border-radius:35px;
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.1),
+    rgba(255,255,255,.025)
+  );
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.65),
+    0 0 40px rgba(255,70,160,.08);
+  backdrop-filter:blur(20px);
+}
+
+.lock-box:before{
+  content:"🦇";
+  position:absolute;
+  top:14px;
+  left:18px;
+  font-size:28px;
+}
+
+.lock-box:after{
+  content:"🎀";
+  position:absolute;
+  top:14px;
+  right:18px;
+  font-size:28px;
+}
+
+.age-love{
+  color:#ff72ae;
+  font-size:23px;
+  font-weight:bold;
+  margin-bottom:15px;
+  text-shadow:0 0 15px rgba(255,70,160,.45);
 }
 
 .lock-icon{
-  font-size:65px;
+  font-size:62px;
 }
 
 .lock-box h1{
-  color:#d95787;
+  color:#fff;
+  font-size:28px;
 }
 
 .lock-box p{
-  color:#987080;
+  color:#bca9b5;
 }
 
 #pin{
   width:100%;
   border:0;
   outline:0;
-  border-bottom:2px solid #efa0bf;
   background:transparent;
+  color:#fff;
+  border-bottom:2px solid #ff68a9;
   text-align:center;
   font-size:30px;
   letter-spacing:12px;
   padding:12px;
 }
 
+#pin::placeholder{
+  color:#655460;
+}
+
 .unlock{
   margin-top:25px;
   border:0;
-  background:#e96899;
-  color:white;
-  padding:14px 30px;
   border-radius:50px;
+  padding:14px 35px;
+  color:#fff;
+  background:linear-gradient(135deg,#ff4f99,#ad3d9a);
   font-size:18px;
   font-weight:bold;
+  box-shadow:0 10px 30px rgba(255,50,150,.3);
+  transition:.25s;
+}
+
+.unlock:hover{
+  transform:scale(1.05);
 }
 
 #error{
-  height:25px;
-  color:#d74d79;
+  min-height:25px;
   margin-top:10px;
+  color:#ff75ac;
 }
 
 /* =========================
@@ -202,27 +270,50 @@ button{
 }
 
 .question-box{
-  width:min(500px,100%);
-  background:white;
-  border-radius:30px;
+  width:min(520px,100%);
+  position:relative;
+  z-index:5;
   padding:45px 25px;
   text-align:center;
-  box-shadow:0 20px 60px rgba(170,70,110,.15);
-  position:relative;
-  z-index:10;
+  border-radius:35px;
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.1),
+    rgba(255,255,255,.025)
+  );
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  backdrop-filter:blur(18px);
+}
+
+.question-box:before{
+  content:"🦇";
+  position:absolute;
+  top:15px;
+  left:20px;
+  font-size:27px;
+}
+
+.question-box:after{
+  content:"🎀";
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:27px;
 }
 
 .question-heart{
   font-size:65px;
+  filter:drop-shadow(0 0 18px rgba(255,50,140,.5));
 }
 
 .question-box h1{
-  color:#d95787;
+  color:#ff72ae;
   font-size:38px;
 }
 
 .question-box p{
-  color:#987080;
+  color:#c2acb8;
 }
 
 .answers{
@@ -242,20 +333,21 @@ button{
 
 .yes{
   border:0;
-  background:#e96899;
-  color:white;
+  color:#fff;
+  background:linear-gradient(135deg,#ff4f99,#b83c99);
+  box-shadow:0 10px 25px rgba(255,60,150,.25);
 }
 
 .no{
-  border:2px solid #efa0bf;
-  background:white;
-  color:#d95787;
+  border:1px solid #ff76ad;
+  background:rgba(255,255,255,.04);
+  color:#ff83b7;
 }
 
 #answerText{
   min-height:25px;
   margin-top:20px;
-  color:#d95787;
+  color:#ff72ae;
   font-weight:bold;
 }
 
@@ -275,13 +367,15 @@ button{
 .gifts-wrapper{
   width:min(950px,100%);
   position:relative;
-  z-index:10;
+  z-index:5;
 }
 
 .gifts-wrapper h1{
   text-align:center;
-  color:#d95787;
+  color:#ff72ae;
+  font-size:36px;
   margin-bottom:45px;
+  text-shadow:0 0 18px rgba(255,70,160,.4);
 }
 
 .gifts{
@@ -292,17 +386,45 @@ button{
 
 .gift{
   width:30%;
-  min-height:210px;
-  border:0;
-  border-radius:30px;
-  background:white;
-  box-shadow:0 15px 45px rgba(170,70,110,.15);
-  transition:.25s;
+  min-height:225px;
+  position:relative;
+  overflow:hidden;
   padding:25px 15px;
+  border-radius:32px;
+  border:1px solid rgba(255,105,180,.18);
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.1),
+    rgba(255,255,255,.025)
+  );
+  color:#fff;
+  box-shadow:0 20px 55px rgba(0,0,0,.5);
+  backdrop-filter:blur(14px);
+  transition:.3s;
 }
 
 .gift:hover{
-  transform:translateY(-9px);
+  transform:translateY(-9px) scale(1.03);
+  border-color:rgba(255,100,180,.5);
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.6),
+    0 0 30px rgba(255,60,160,.1);
+}
+
+.gift:before{
+  content:"🦇";
+  position:absolute;
+  top:8px;
+  left:12px;
+  opacity:.55;
+}
+
+.gift:after{
+  content:"🎀";
+  position:absolute;
+  top:8px;
+  right:12px;
+  opacity:.55;
 }
 
 .gift-icon{
@@ -310,11 +432,11 @@ button{
 }
 
 .gift h2{
-  color:#d95787;
+  color:#ff72ae;
 }
 
 .gift p{
-  color:#987080;
+  color:#bca6b3;
 }
 
 /* =========================
@@ -328,13 +450,14 @@ button{
   grid-template-columns:repeat(4,1fr);
   gap:25px;
   position:relative;
-  z-index:10;
+  z-index:5;
 }
 
 .photo{
-  background:white;
+  background:#fff;
   padding:9px 9px 22px;
-  box-shadow:0 10px 30px rgba(100,40,70,.2);
+  border-radius:6px;
+  box-shadow:0 15px 35px rgba(0,0,0,.55);
 }
 
 .photo:nth-child(odd){
@@ -352,90 +475,9 @@ button{
   display:block;
 }
 
-/* =========================
-   MUSIC
-========================= */
-
-.music-stage{
-  width:min(1000px,100%);
-  min-height:720px;
-  margin:auto;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:10;
-}
-
-.record{
-  width:350px;
-  height:350px;
-  border-radius:50%;
-  background:
-    repeating-radial-gradient(
-      circle,
-      #111 0,
-      #111 4px,
-      #292929 5px,
-      #111 7px
-    );
-  box-shadow:0 20px 55px rgba(0,0,0,.35);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.record.playing{
-  animation:spin 5s linear infinite;
-}
-
-.record-cover{
-  width:145px;
-  height:145px;
-  border-radius:50%;
-  object-fit:cover;
-  border:4px solid white;
-  box-shadow:0 8px 25px rgba(0,0,0,.3);
-}
-
-@keyframes spin{
-  from{transform:rotate(0)}
-  to{transform:rotate(360deg)}
-}
-
-.music-photo{
-  position:absolute;
-  width:125px;
-  background:white;
-  padding:7px 7px 18px;
-  box-shadow:0 10px 25px rgba(100,40,70,.25);
-}
-
-.music-photo img{
-  width:100%;
-  height:125px;
-  object-fit:cover;
-}
-
-.p1{top:0;left:5%;transform:rotate(-9deg)}
-.p2{top:0;right:5%;transform:rotate(8deg)}
-.p3{top:185px;left:0;transform:rotate(7deg)}
-.p4{top:185px;right:0;transform:rotate(-8deg)}
-.p5{bottom:95px;left:6%;transform:rotate(-7deg)}
-.p6{bottom:95px;right:6%;transform:rotate(9deg)}
-.p7{bottom:0;left:30%;transform:rotate(5deg)}
-.p8{bottom:0;right:30%;transform:rotate(-6deg)}
-
-.music-description{
-  text-align:center;
-  color:#d95787;
-  font-weight:bold;
-  margin-top:18px;
-}
-
 .audio-box{
   width:min(500px,90vw);
-  margin:0 auto;
+  margin:35px auto 0;
   text-align:center;
   position:relative;
   z-index:10;
@@ -447,9 +489,168 @@ audio{
 }
 
 .audio-note{
-  color:#987080;
+  color:#bca8b4;
   font-size:14px;
   margin-top:8px;
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music-page{
+  overflow:hidden;
+}
+
+.music-hero{
+  width:min(1100px,100%);
+  min-height:720px;
+  margin:auto;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.music-glow{
+  position:absolute;
+  width:430px;
+  height:430px;
+  border-radius:50%;
+  background:rgba(255,60,160,.12);
+  filter:blur(35px);
+}
+
+.record-wrap{
+  position:relative;
+  z-index:20;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.record{
+  width:365px;
+  height:365px;
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle at center,
+      #ff67a9 0 5%,
+      #090909 5.5% 8%,
+      transparent 8.5%
+    ),
+    repeating-radial-gradient(
+      circle,
+      #050505 0,
+      #050505 3px,
+      #252027 4px,
+      #050505 7px
+    );
+  border:4px solid #18131a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    0 30px 70px rgba(0,0,0,.7),
+    0 0 35px rgba(255,70,160,.12);
+  cursor:pointer;
+}
+
+.record.playing{
+  animation:spin 5s linear infinite;
+}
+
+.record-cover{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid #fff;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
+}
+
+.record-center{
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#fff;
+}
+
+@keyframes spin{
+  from{transform:rotate(0)}
+  to{transform:rotate(360deg)}
+}
+
+.music-photo{
+  position:absolute;
+  width:145px;
+  background:#fff;
+  padding:8px 8px 20px;
+  box-shadow:0 15px 35px rgba(0,0,0,.6);
+  z-index:10;
+}
+
+.music-photo img{
+  width:100%;
+  height:145px;
+  object-fit:cover;
+}
+
+.p1{
+  top:0;
+  left:5%;
+  transform:rotate(-9deg);
+}
+
+.p2{
+  top:0;
+  right:5%;
+  transform:rotate(8deg);
+}
+
+.p3{
+  top:190px;
+  left:0;
+  transform:rotate(7deg);
+}
+
+.p4{
+  top:190px;
+  right:0;
+  transform:rotate(-8deg);
+}
+
+.p5{
+  bottom:100px;
+  left:5%;
+  transform:rotate(-7deg);
+}
+
+.p6{
+  bottom:100px;
+  right:5%;
+  transform:rotate(9deg);
+}
+
+.p7{
+  bottom:0;
+  left:29%;
+  transform:rotate(5deg);
+}
+
+.p8{
+  bottom:0;
+  right:29%;
+  transform:rotate(-6deg);
+}
+
+.music-description{
+  text-align:center;
+  color:#ff72ae;
+  font-weight:bold;
+  margin-top:20px;
 }
 
 /* =========================
@@ -462,19 +663,31 @@ audio{
   display:flex;
   align-items:center;
   gap:45px;
-  position:relative;
-  z-index:10;
 }
 
 .letter{
   flex:1;
-  background:white;
-  border-radius:30px;
   padding:35px 25px;
+  border-radius:32px;
   text-align:center;
   line-height:2;
   font-size:19px;
-  box-shadow:0 15px 50px rgba(170,70,110,.15);
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.1),
+    rgba(255,255,255,.025)
+  );
+  border:1px solid rgba(255,105,180,.15);
+  box-shadow:0 20px 55px rgba(0,0,0,.5);
+  backdrop-filter:blur(15px);
+}
+
+.letter p{
+  color:#d7c6d0;
+}
+
+.letter strong{
+  color:#ff72ae;
 }
 
 .letter-icon{
@@ -482,27 +695,28 @@ audio{
 }
 
 .small-record-box{
-  width:220px;
+  width:240px;
   text-align:center;
 }
 
 .small-record{
-  width:185px;
-  height:185px;
-  border-radius:50%;
+  width:195px;
+  height:195px;
   margin:auto;
+  border-radius:50%;
   background:
     repeating-radial-gradient(
       circle,
-      #111 0,
-      #111 3px,
-      #292929 4px,
-      #111 6px
+      #080808 0,
+      #080808 3px,
+      #292329 4px,
+      #080808 6px
     );
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 15px 40px rgba(0,0,0,.3);
+  box-shadow:0 20px 45px rgba(0,0,0,.65);
+  cursor:pointer;
 }
 
 .small-record.playing{
@@ -510,24 +724,27 @@ audio{
 }
 
 .small-cover{
-  width:75px;
-  height:75px;
+  width:80px;
+  height:80px;
   border-radius:50%;
   object-fit:cover;
+  border:3px solid #fff;
 }
 
 /* =========================
-   HEART TRANSITION
+   TRANSITION
 ========================= */
 
 #loveTransition{
   position:fixed;
   inset:0;
   z-index:200;
-  background:#fff0f6;
   display:none;
   align-items:center;
   justify-content:center;
+  background:
+    radial-gradient(circle,rgba(255,255,255,.08),transparent 25%),
+    linear-gradient(135deg,#07070a,#171019);
 }
 
 #loveTransition.show{
@@ -536,7 +753,8 @@ audio{
 
 #heart{
   position:absolute;
-  font-size:150px;
+  font-size:160px;
+  filter:drop-shadow(0 0 30px rgba(255,70,160,.6));
 }
 
 #heart.break{
@@ -560,7 +778,7 @@ audio{
 .om-container{
   display:flex;
   align-items:center;
-  gap:20px;
+  gap:22px;
   direction:ltr;
   opacity:0;
 }
@@ -582,19 +800,19 @@ audio{
 
 .om-letter{
   position:relative;
-  color:#d95787;
-  font-size:90px;
+  color:#ff72ae;
+  font-size:95px;
   font-weight:bold;
+  text-shadow:0 0 20px rgba(255,70,160,.5);
 }
 
-.om-sticker{
+.om-icon{
   position:absolute;
-  width:75px;
-  height:75px;
-  object-fit:contain;
+  width:65px;
+  height:65px;
   left:50%;
   transform:translateX(-50%);
-  bottom:72px;
+  bottom:70px;
 }
 
 /* =========================
@@ -603,11 +821,8 @@ audio{
 
 @media(max-width:700px){
 
-  .kitty-left,
-  .kitty-right,
-  .batman-left,
-  .batman-right{
-    width:65px;
+  .title{
+    font-size:30px;
   }
 
   .gifts{
@@ -628,13 +843,13 @@ audio{
     height:190px;
   }
 
-  .music-stage{
-    min-height:720px;
+  .music-hero{
+    min-height:680px;
   }
 
   .record{
-    width:245px;
-    height:245px;
+    width:250px;
+    height:250px;
   }
 
   .record-cover{
@@ -643,21 +858,21 @@ audio{
   }
 
   .music-photo{
-    width:72px;
+    width:78px;
   }
 
   .music-photo img{
-    height:78px;
+    height:85px;
   }
 
-  .p1{top:0;left:2%}
-  .p2{top:0;right:2%}
-  .p3{top:180px;left:0}
-  .p4{top:180px;right:0}
-  .p5{bottom:120px;left:2%}
-  .p6{bottom:120px;right:2%}
-  .p7{bottom:0;left:20%}
-  .p8{bottom:0;right:20%}
+  .p1{top:0;left:1%}
+  .p2{top:0;right:1%}
+  .p3{top:170px;left:0}
+  .p4{top:170px;right:0}
+  .p5{bottom:110px;left:1%}
+  .p6{bottom:110px;right:1%}
+  .p7{bottom:0;left:19%}
+  .p8{bottom:0;right:19%}
 
   .letter-layout{
     flex-direction:column;
@@ -672,46 +887,27 @@ audio{
     height:150px;
   }
 
-  .question-box h1{
-    font-size:30px;
-  }
-
   .om-letter{
     font-size:65px;
   }
 
-  .om-sticker{
-    width:55px;
-    height:55px;
-    bottom:50px;
+  .om-container{
+    gap:12px;
   }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- DECORATIONS -->
+<!-- BACKGROUND -->
 
-<div class="sticker kitty-left">
-  <img src="kitty1.png"
-       onerror="this.parentElement.style.display='none'">
-</div>
+<div class="bg-bat b1">🦇</div>
+<div class="bg-bat b2">🦇</div>
 
-<div class="sticker kitty-right">
-  <img src="kitty2.png"
-       onerror="this.parentElement.style.display='none'">
-</div>
-
-<div class="sticker batman-left">
-  <img src="batman1.png"
-       onerror="this.parentElement.style.display='none'">
-</div>
-
-<div class="sticker batman-right">
-  <img src="batman2.png"
-       onerror="this.parentElement.style.display='none'">
-</div>
+<div class="bg-bow bo1">🎀</div>
+<div class="bg-bow bo2">🎀</div>
 
 <div class="float-heart fh1">♥</div>
 <div class="float-heart fh2">♥</div>
@@ -724,11 +920,21 @@ audio{
 
   <div class="lock-box">
 
-    <div class="lock-icon">🔒❤️</div>
+    <div class="age-love">
+      عمري زايد عمرك ❤️
+    </div>
 
-    <h1>عندك حاجة خاصة 💗</h1>
+    <div class="lock-icon">
+      🔒❤️
+    </div>
 
-    <p>دخلي الرقم السري باش تفتحيها</p>
+    <h1>
+      عندك حاجة خاصة 💗
+    </h1>
+
+    <p>
+      دخلي الرقم السري باش تفتحيها
+    </p>
 
     <input
       id="pin"
@@ -755,11 +961,17 @@ audio{
 
   <div class="question-box">
 
-    <div class="question-heart">❤️</div>
+    <div class="question-heart">
+      ❤️
+    </div>
 
-    <h1>واش كتحبيني؟</h1>
+    <h1>
+      واش كتحبيني؟
+    </h1>
 
-    <p>جاوبيني بصراحة... 🥹❤️</p>
+    <p>
+      جاوبيني بصراحة... 🥹❤️
+    </p>
 
     <div class="answers">
 
@@ -786,35 +998,48 @@ audio{
 
   <div class="gifts-wrapper">
 
-    <h1>عندك ثلاث هدايا 🎁❤️</h1>
+    <h1>
+      عندك ثلاث هدايا 🎁❤️
+    </h1>
 
     <div class="gifts">
 
       <button
         class="gift"
-        onclick="openPage('photosPage')"
-      >
+        onclick="openPage('photosPage')">
+
         <div class="gift-icon">📸</div>
+
         <h2>صورنا</h2>
+
         <p>ذكرياتنا ❤️</p>
+
       </button>
+
 
       <button
         class="gift"
-        onclick="openPage('musicPage')"
-      >
+        onclick="openPage('musicPage')">
+
         <div class="gift-icon">🎵</div>
+
         <h2>أغنيتنا</h2>
+
         <p>الأغنية ديالنا 🎶</p>
+
       </button>
+
 
       <button
         class="gift"
-        onclick="startLetter()"
-      >
+        onclick="startLetter()">
+
         <div class="gift-icon">💌</div>
+
         <h2>رسالتي</h2>
+
         <p>شي حاجة من قلبي ❤️</p>
+
       </button>
 
     </div>
@@ -834,38 +1059,58 @@ audio{
 
   <div class="photo-grid">
 
-    <div class="photo"><img src="image1.jpeg"></div>
-    <div class="photo"><img src="image2.jpeg"></div>
-    <div class="photo"><img src="image3.jpeg"></div>
-    <div class="photo"><img src="image4.jpeg"></div>
-    <div class="photo"><img src="image5.jpeg"></div>
-    <div class="photo"><img src="image6.jpeg"></div>
-    <div class="photo"><img src="image7.jpeg"></div>
-    <div class="photo"><img src="image8.jpeg"></div>
+    <div class="photo">
+      <img src="image1.jpeg" alt="صورة 1">
+    </div>
+
+    <div class="photo">
+      <img src="image2.jpeg" alt="صورة 2">
+    </div>
+
+    <div class="photo">
+      <img src="image3.jpeg" alt="صورة 3">
+    </div>
+
+    <div class="photo">
+      <img src="image4.jpeg" alt="صورة 4">
+    </div>
+
+    <div class="photo">
+      <img src="image5.jpeg" alt="صورة 5">
+    </div>
+
+    <div class="photo">
+      <img src="image6.jpeg" alt="صورة 6">
+    </div>
+
+    <div class="photo">
+      <img src="image7.jpeg" alt="صورة 7">
+    </div>
+
+    <div class="photo">
+      <img src="image8.jpeg" alt="صورة 8">
+    </div>
 
   </div>
-
 
   <div class="audio-box">
 
     <audio
       id="photosSong"
       preload="metadata"
-      src="photos-song.m4a"
+      src="photos-song.m4a.m4a"
       controls>
     </audio>
 
     <div class="audio-note">
-      المقطع ديال الصور ❤️ — 1:05 إلى 1:35
+      مقطع الصور ❤️ — 1:05 إلى 1:35
     </div>
 
   </div>
 
-
   <button
     class="back"
-    onclick="openPage('giftsPage')"
-  >
+    onclick="openPage('giftsPage')">
     ← رجوع للهدايا
   </button>
 
@@ -874,14 +1119,15 @@ audio{
 
 <!-- OUR SONG -->
 
-<section id="musicPage" class="page">
+<section id="musicPage" class="page music-page">
 
   <h1 class="title">
     أغنيتنا 🎵❤️
   </h1>
 
+  <div class="music-hero">
 
-  <div class="music-stage">
+    <div class="music-glow"></div>
 
     <div class="music-photo p1">
       <img src="image1.jpeg">
@@ -916,15 +1162,31 @@ audio{
     </div>
 
 
-    <div>
+    <div class="record-wrap">
 
-      <div id="ourRecord" class="record">
+      <div
+        id="ourRecord"
+        class="record">
 
-        <img
-          class="record-cover"
-          src="our-cover.jpg"
-          alt="غلاف الأغنية"
-        >
+        <div
+          style="
+            width:150px;
+            height:150px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:
+              radial-gradient(circle,#fff 0 8%,transparent 9%),
+              linear-gradient(135deg,#ff72ae,#111 65%);
+            border:5px solid white;
+            box-shadow:0 10px 30px rgba(0,0,0,.5);
+            font-size:55px;
+          ">
+          🎀
+        </div>
+
+        <div class="record-center"></div>
 
       </div>
 
@@ -935,7 +1197,7 @@ audio{
         <br>
 
         <small>
-          0:45 — 1:26
+          المقطع 0:45 — 1:26
         </small>
 
       </div>
@@ -950,12 +1212,12 @@ audio{
     <audio
       id="ourSong"
       preload="metadata"
-      src="our-song.m4a"
+      src="our-song.m4a.m4a"
       controls>
     </audio>
 
     <div class="audio-note">
-      إذا ما بداش أوتوماتيك، اضغطي Play ❤️
+      اضغطي على الأسطوانة أو Play لتشغيل الأغنية ❤️
     </div>
 
   </div>
@@ -963,8 +1225,7 @@ audio{
 
   <button
     class="back"
-    onclick="openPage('giftsPage')"
-  >
+    onclick="openPage('giftsPage')">
     ← رجوع للهدايا
   </button>
 
@@ -978,7 +1239,6 @@ audio{
   <h1 class="title">
     رسالتي ليك 💌
   </h1>
-
 
   <div class="letter-layout">
 
@@ -1031,28 +1291,39 @@ audio{
 
     <div class="small-record-box">
 
-      <div id="letterRecord" class="small-record">
+      <div
+        id="letterRecord"
+        class="small-record">
 
-        <img
-          class="small-cover"
-          src="letter-cover.jpg"
-          alt="غلاف الأغنية"
-        >
+        <div
+          style="
+            width:80px;
+            height:80px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#ff72ae,#111);
+            border:3px solid white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:30px;
+          ">
+          🎀
+        </div>
 
       </div>
 
-      <p style="color:#d95787;font-weight:bold">
+      <p style="color:#ff72ae;font-weight:bold">
         مقطع ليك ❤️
       </p>
 
       <audio
         id="letterSong"
         preload="metadata"
-        src="letter-song.m4a"
+        src="letter-song.m4a.m4a"
         controls>
       </audio>
 
-      <p style="font-size:13px;color:#987080">
+      <p style="font-size:13px;color:#bca6b2">
         0:28 — 1:30
       </p>
 
@@ -1063,57 +1334,51 @@ audio{
 
   <button
     class="back"
-    onclick="openPage('giftsPage')"
-  >
+    onclick="openPage('giftsPage')">
     ← رجوع للهدايا
   </button>
 
 </section>
 
 
-<!-- HEART TRANSITION -->
+<!-- LOVE TRANSITION -->
 
 <div id="loveTransition">
 
-  <div id="heart">❤️</div>
+  <div id="heart">
+    ❤️
+  </div>
 
-  <div id="omContent" class="om-container">
-
-    <!-- O + Batman -->
+  <div
+    id="omContent"
+    class="om-container">
 
     <div class="om-letter">
 
       O
 
-      <img
-        class="om-sticker"
-        src="batman1.png"
-        onerror="this.style.display='none'"
-      >
+      <div class="om-icon">
+        🦇
+      </div>
 
     </div>
 
-
-    <div style="
-      font-size:65px;
-      color:#d95787;
-      font-weight:bold;
-    ">
+    <div
+      style="
+        font-size:65px;
+        color:#ff72ae;
+        font-weight:bold;
+      ">
       +
     </div>
-
-
-    <!-- M + Hello Kitty -->
 
     <div class="om-letter">
 
       M
 
-      <img
-        class="om-sticker"
-        src="kitty1.png"
-        onerror="this.style.display='none'"
-      >
+      <div class="om-icon">
+        🎀
+      </div>
 
     </div>
 
@@ -1128,6 +1393,8 @@ audio{
    SETTINGS
 ========================= */
 
+const PASSWORD = "1614";
+
 const START_OUR = 45;
 const END_OUR = 86;
 
@@ -1139,7 +1406,7 @@ const END_LETTER = 90;
 
 
 /* =========================
-   ELEMENTS
+   AUDIO
 ========================= */
 
 const ourSong =
@@ -1159,23 +1426,21 @@ const letterRecord =
 
 
 /* =========================
-   LOCK
+   UNLOCK
 ========================= */
 
 function unlock(){
 
   const pin =
-    document.getElementById("pin").value;
+    document.getElementById("pin").value.trim();
 
   const error =
     document.getElementById("error");
 
+  if(pin === PASSWORD){
 
-  if(pin === "1614"){
-
-    document
-      .getElementById("lock")
-      .style.display = "none";
+    document.getElementById("lock").style.display =
+      "none";
 
     openPage("questionPage");
 
@@ -1184,17 +1449,18 @@ function unlock(){
     error.textContent =
       "الرقم غلط 😭❤️";
 
-    document
-      .getElementById("pin")
-      .value = "";
+    document.getElementById("pin").value = "";
+
+    setTimeout(()=>{
+      error.textContent = "";
+    },1800);
 
   }
 }
 
-
 document
 .getElementById("pin")
-.addEventListener("keydown",function(e){
+.addEventListener("keydown",(e)=>{
 
   if(e.key === "Enter"){
     unlock();
@@ -1204,45 +1470,51 @@ document
 
 
 /* =========================
-   HELPERS
+   STOP MUSIC
 ========================= */
 
 function stopAllMusic(){
 
-  [ourSong,photosSong,letterSong]
-    .forEach(function(audio){
+  [
+    ourSong,
+    photosSong,
+    letterSong
+  ].forEach(audio=>{
 
-      if(!audio) return;
-
-      audio.pause();
+    audio.pause();
 
   });
-
 
   ourRecord.classList.remove("playing");
   letterRecord.classList.remove("playing");
 }
 
 
-function prepareClip(audio,start){
+/* =========================
+   PAGE
+========================= */
 
-  audio.currentTime = start;
+function openPage(id){
 
-}
+  stopAllMusic();
 
-
-function playClip(audio,start){
-
-  audio.currentTime = start;
-
-  const p = audio.play();
-
-  if(p){
-    p.catch(function(){
-      /* iPhone may require manual Play */
+  document
+    .querySelectorAll(".page")
+    .forEach(page=>{
+      page.classList.remove("active");
     });
+
+  const target =
+    document.getElementById(id);
+
+  if(target){
+    target.classList.add("active");
   }
 
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
 
 
@@ -1250,19 +1522,26 @@ function playClip(audio,start){
    OUR SONG
 ========================= */
 
-ourSong.addEventListener("play",function(){
+ourSong.addEventListener("play",()=>{
 
   ourRecord.classList.add("playing");
 
+  if(
+    ourSong.currentTime < START_OUR ||
+    ourSong.currentTime >= END_OUR
+  ){
+    ourSong.currentTime = START_OUR;
+  }
+
 });
 
-ourSong.addEventListener("pause",function(){
+ourSong.addEventListener("pause",()=>{
 
   ourRecord.classList.remove("playing");
 
 });
 
-ourSong.addEventListener("timeupdate",function(){
+ourSong.addEventListener("timeupdate",()=>{
 
   if(ourSong.currentTime >= END_OUR){
 
@@ -1273,12 +1552,44 @@ ourSong.addEventListener("timeupdate",function(){
 
 });
 
+ourRecord.addEventListener("click",()=>{
+
+  if(ourSong.paused){
+
+    if(
+      ourSong.currentTime < START_OUR ||
+      ourSong.currentTime >= END_OUR
+    ){
+      ourSong.currentTime = START_OUR;
+    }
+
+    ourSong.play().catch(()=>{});
+
+  }else{
+
+    ourSong.pause();
+
+  }
+
+});
+
 
 /* =========================
    PHOTOS SONG
 ========================= */
 
-photosSong.addEventListener("timeupdate",function(){
+photosSong.addEventListener("play",()=>{
+
+  if(
+    photosSong.currentTime < START_PHOTOS ||
+    photosSong.currentTime >= END_PHOTOS
+  ){
+    photosSong.currentTime = START_PHOTOS;
+  }
+
+});
+
+photosSong.addEventListener("timeupdate",()=>{
 
   if(photosSong.currentTime >= END_PHOTOS){
 
@@ -1294,19 +1605,26 @@ photosSong.addEventListener("timeupdate",function(){
    LETTER SONG
 ========================= */
 
-letterSong.addEventListener("play",function(){
+letterSong.addEventListener("play",()=>{
 
   letterRecord.classList.add("playing");
 
+  if(
+    letterSong.currentTime < START_LETTER ||
+    letterSong.currentTime >= END_LETTER
+  ){
+    letterSong.currentTime = START_LETTER;
+  }
+
 });
 
-letterSong.addEventListener("pause",function(){
+letterSong.addEventListener("pause",()=>{
 
   letterRecord.classList.remove("playing");
 
 });
 
-letterSong.addEventListener("timeupdate",function(){
+letterSong.addEventListener("timeupdate",()=>{
 
   if(letterSong.currentTime >= END_LETTER){
 
@@ -1317,118 +1635,60 @@ letterSong.addEventListener("timeupdate",function(){
 
 });
 
+letterRecord.addEventListener("click",()=>{
 
-/* =========================
-   PAGE NAVIGATION
-========================= */
+  if(letterSong.paused){
 
-function openPage(id){
+    if(
+      letterSong.currentTime < START_LETTER ||
+      letterSong.currentTime >= END_LETTER
+    ){
+      letterSong.currentTime = START_LETTER;
+    }
 
-  stopAllMusic();
+    letterSong.play().catch(()=>{});
 
+  }else{
 
-  document
-    .querySelectorAll(".page")
-    .forEach(function(page){
-
-      page.classList.remove("active");
-
-    });
-
-
-  const target =
-    document.getElementById(id);
-
-
-  if(target){
-
-    target.classList.add("active");
+    letterSong.pause();
 
   }
 
-
-  window.scrollTo(0,0);
-
-
-  /*
-    نحاول التشغيل التلقائي عند دخول الصفحة.
-    إذا رفض Safari، يظهر زر Play.
-  */
-
-  if(id === "musicPage"){
-
-    setTimeout(function(){
-
-      playClip(
-        ourSong,
-        START_OUR
-      );
-
-    },250);
-
-  }
-
-
-  if(id === "photosPage"){
-
-    setTimeout(function(){
-
-      playClip(
-        photosSong,
-        START_PHOTOS
-      );
-
-    },250);
-
-  }
-
-
-  if(id === "letterPage"){
-
-    setTimeout(function(){
-
-      playClip(
-        letterSong,
-        START_LETTER
-      );
-
-    },250);
-
-  }
-
-}
+});
 
 
 /* =========================
-   QUESTION
+   NO BUTTON
 ========================= */
 
 let yesScale = 1;
 
-
 document
 .getElementById("no")
-.addEventListener("click",function(){
+.addEventListener("click",()=>{
 
   yesScale += .3;
 
   document
     .getElementById("yes")
     .style.transform =
-    "scale("+Math.min(yesScale,4)+")";
-
+      "scale(" + Math.min(yesScale,4) + ")";
 
   document
     .getElementById("answerText")
     .textContent =
-    "لااا 😭 جربي YES ❤️";
+      "لااا 😭 جربي YES ❤️";
 
 });
 
 
+/* =========================
+   YES
+========================= */
+
 document
 .getElementById("yes")
-.addEventListener("click",function(){
+.addEventListener("click",()=>{
 
   openPage("giftsPage");
 
@@ -1443,47 +1703,49 @@ function startLetter(){
 
   stopAllMusic();
 
-
   const transition =
     document.getElementById("loveTransition");
 
   const heart =
     document.getElementById("heart");
 
-  const omContent =
+  const om =
     document.getElementById("omContent");
-
 
   transition.classList.add("show");
 
   heart.classList.remove("break");
+  om.classList.remove("show");
 
-  omContent.classList.remove("show");
+  void heart.offsetWidth;
 
+  heart.classList.add("break");
 
-  setTimeout(function(){
+  setTimeout(()=>{
 
-    heart.classList.add("break");
+    om.classList.add("show");
 
-  },900);
+  },700);
 
-
-  setTimeout(function(){
-
-    omContent.classList.add("show");
-
-  },1500);
-
-
-  setTimeout(function(){
+  setTimeout(()=>{
 
     transition.classList.remove("show");
 
+    heart.classList.remove("break");
+    om.classList.remove("show");
+
     openPage("letterPage");
 
-  },3000);
+  },2300);
 
 }
+
+
+/* =========================
+   START
+========================= */
+
+document.getElementById("lock").style.display = "flex";
 
 </script>
 
