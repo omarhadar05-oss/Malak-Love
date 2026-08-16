@@ -21,10 +21,6 @@ button{
   cursor:pointer;
 }
 
-/* =========================
-   GENERAL
-========================= */
-
 .page{
   display:none;
   min-height:100vh;
@@ -60,9 +56,7 @@ button{
   box-shadow:0 8px 25px rgba(160,60,100,.15);
 }
 
-/* =========================
-   LOCK
-========================= */
+/* ================= LOCK ================= */
 
 #lock{
   position:fixed;
@@ -125,9 +119,7 @@ button{
   margin-top:10px;
 }
 
-/* =========================
-   QUESTION
-========================= */
+/* ================= QUESTION ================= */
 
 #questionPage{
   align-items:center;
@@ -194,9 +186,7 @@ button{
   font-weight:bold;
 }
 
-/* =========================
-   GIFTS
-========================= */
+/* ================= GIFTS ================= */
 
 #giftsPage{
   align-items:center;
@@ -250,9 +240,7 @@ button{
   color:#987080;
 }
 
-/* =========================
-   PHOTOS
-========================= */
+/* ================= PHOTOS ================= */
 
 .photo-grid{
   width:min(950px,100%);
@@ -283,9 +271,7 @@ button{
   display:block;
 }
 
-/* =========================
-   MUSIC
-========================= */
+/* ================= MUSIC ================= */
 
 .music-page{
   position:relative;
@@ -370,12 +356,28 @@ button{
   transform:rotate(-8deg);
 }
 
-.music-player{
-  margin-top:25px;
+.music-player-box{
   width:min(420px,90vw);
+  margin:15px auto 0;
+  text-align:center;
+}
+
+.youtube-player{
+  width:100%;
   height:80px;
-  border:0;
   border-radius:15px;
+  overflow:hidden;
+}
+
+.play-fallback{
+  display:none;
+  margin-top:10px;
+  border:0;
+  border-radius:50px;
+  padding:10px 22px;
+  background:#e96899;
+  color:white;
+  font-weight:bold;
 }
 
 .music-description{
@@ -385,9 +387,7 @@ button{
   margin-top:15px;
 }
 
-/* =========================
-   LETTER
-========================= */
+/* ================= LETTER ================= */
 
 .letter-layout{
   width:min(1000px,100%);
@@ -444,9 +444,7 @@ button{
   object-fit:cover;
 }
 
-/* =========================
-   HEART TRANSITION
-========================= */
+/* ================= HEART ================= */
 
 #loveTransition{
   position:fixed;
@@ -487,10 +485,10 @@ button{
     transform:scale(1);
     opacity:1;
   }
-  45%{
+ 45%{
     transform:scale(1.15) rotate(5deg);
   }
-  100%{
+ 100%{
     transform:scale(1.8) rotate(-8deg);
     opacity:0;
   }
@@ -519,9 +517,7 @@ button{
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* ================= MOBILE ================= */
 
 @media(max-width:700px){
 
@@ -702,50 +698,54 @@ button{
   <div class="photo-grid">
 
     <div class="photo">
-      <img src="image1.jpeg">
+      <img src="image1.jpeg" alt="">
     </div>
 
     <div class="photo">
-      <img src="image2.jpeg">
+      <img src="image2.jpeg" alt="">
     </div>
 
     <div class="photo">
-      <img src="image3.jpeg">
+      <img src="image3.jpeg" alt="">
     </div>
 
     <div class="photo">
-      <img src="image4.jpeg">
+      <img src="image4.jpeg" alt="">
     </div>
 
     <div class="photo">
-      <img src="image5.jpeg">
+      <img src="image5.jpeg" alt="">
     </div>
 
     <div class="photo">
-      <img src="image6.jpeg">
+      <img src="image6.jpeg" alt="">
     </div>
 
     <div class="photo">
-      <img src="image7.jpeg">
+      <img src="image7.jpeg" alt="">
     </div>
 
     <div class="photo">
-      <img src="image8.jpeg">
+      <img src="image8.jpeg" alt="">
     </div>
 
   </div>
 
-  <!-- أغنية الصور
-       1:05 - 1:35
-       wgXToIp_460
-  -->
+  <!-- المشغل الحقيقي -->
 
-  <iframe
-    class="music-player"
-    src="https://www.youtube.com/embed/wgXToIp_460?start=65&end=95"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
-  </iframe>
+  <div class="music-player-box">
+
+    <div id="photosPlayer" class="youtube-player"></div>
+
+    <button
+      id="photosPlay"
+      class="play-fallback"
+      onclick="playPhotosSong()"
+    >
+      ▶️ شغلي المقطع
+    </button>
+
+  </div>
 
   <button
     class="back"
@@ -757,7 +757,7 @@ button{
 </section>
 
 
-<!-- ================= OUR SONG PAGE ================= -->
+<!-- ================= OUR SONG ================= -->
 
 <section id="musicPage" class="page music-page">
 
@@ -768,19 +768,19 @@ button{
   <div class="music-stage">
 
     <div class="music-photo p1">
-      <img src="image1.jpeg">
+      <img src="image1.jpeg" alt="">
     </div>
 
     <div class="music-photo p2">
-      <img src="image2.jpeg">
+      <img src="image2.jpeg" alt="">
     </div>
 
     <div class="music-photo p3">
-      <img src="image3.jpeg">
+      <img src="image3.jpeg" alt="">
     </div>
 
     <div class="music-photo p4">
-      <img src="image4.jpeg">
+      <img src="image4.jpeg" alt="">
     </div>
 
     <div>
@@ -790,30 +790,44 @@ button{
         <img
           class="record-cover"
           src="image1.jpeg"
+          alt=""
         >
 
       </div>
 
       <div class="music-description">
+
         أغنيتنا ❤️
         <br>
-        <small>المقطع 0:45 — 1:26</small>
+
+        <small>
+          المقطع 0:45 — 1:26
+        </small>
+
       </div>
 
     </div>
 
   </div>
 
-  <div class="center">
 
-    <iframe
-      class="music-player"
-      src="https://www.youtube.com/embed/ZvlzB5gUD-g?start=45&end=86"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
+  <div class="music-player-box">
+
+    <div
+      id="ourSongPlayer"
+      class="youtube-player">
+    </div>
+
+    <button
+      id="ourSongPlay"
+      class="play-fallback"
+      onclick="playOurSong()"
+    >
+      ▶️ شغلي أغنيتنا
+    </button>
 
   </div>
+
 
   <button
     class="back"
@@ -825,7 +839,7 @@ button{
 </section>
 
 
-<!-- ================= LETTER PAGE ================= -->
+<!-- ================= LETTER ================= -->
 
 <section id="letterPage" class="page">
 
@@ -889,6 +903,7 @@ button{
         <img
           class="small-cover"
           src="image2.jpeg"
+          alt=""
         >
 
       </div>
@@ -897,21 +912,28 @@ button{
         مقطع ليك ❤️
       </p>
 
-      <!-- أغنية الرسالة
-           0:28 - 1:30
-           DhBS7gTvmfc
-      -->
 
-      <iframe
-        class="music-player"
-        src="https://www.youtube.com/embed/DhBS7gTvmfc?start=28&end=90"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
+      <div class="music-player-box">
+
+        <div
+          id="letterPlayer"
+          class="youtube-player">
+        </div>
+
+        <button
+          id="letterPlay"
+          class="play-fallback"
+          onclick="playLetterSong()"
+        >
+          ▶️ شغلي المقطع
+        </button>
+
+      </div>
 
     </div>
 
   </div>
+
 
   <button
     class="back"
@@ -938,13 +960,227 @@ button{
 </div>
 
 
+<!-- YouTube API -->
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
 <script>
 
-/* ================= LOCK ================= */
+/* ==========================================
+   YOUTUBE
+========================================== */
+
+let photosPlayer;
+let ourSongPlayer;
+let letterPlayer;
+
+let playersReady = false;
+
+
+/*
+  الأوقات:
+
+  صورنا:
+  1:05 = 65
+  1:35 = 95
+
+  أغنيتنا:
+  0:45 = 45
+  1:26 = 86
+
+  الرسالة:
+  0:28 = 28
+  1:30 = 90
+*/
+
+
+function onYouTubeIframeAPIReady(){
+
+  photosPlayer = new YT.Player("photosPlayer",{
+
+    videoId:"wgXToIp_460",
+
+    playerVars:{
+      start:65,
+      controls:1,
+      rel:0,
+      modestbranding:1,
+      playsinline:1
+    },
+
+    events:{
+      onReady:function(event){
+
+        setupPlayer(event.target,"photosPlay",65,95);
+
+      }
+    }
+
+  });
+
+
+  ourSongPlayer = new YT.Player("ourSongPlayer",{
+
+    videoId:"ZvlzB5gUD-g",
+
+    playerVars:{
+      start:45,
+      controls:1,
+      rel:0,
+      modestbranding:1,
+      playsinline:1
+    },
+
+    events:{
+      onReady:function(event){
+
+        setupPlayer(event.target,"ourSongPlay",45,86);
+
+      }
+    }
+
+  });
+
+
+  letterPlayer = new YT.Player("letterPlayer",{
+
+    videoId:"DhBS7gTvmfc",
+
+    playerVars:{
+      start:28,
+      controls:1,
+      rel:0,
+      modestbranding:1,
+      playsinline:1
+    },
+
+    events:{
+      onReady:function(event){
+
+        setupPlayer(event.target,"letterPlay",28,90);
+
+      }
+    }
+
+  });
+
+}
+
+
+function setupPlayer(player,buttonId,start,end){
+
+  /*
+    نحاول نشغل المقطع تلقائياً.
+    إذا المتصفح منع autoplay،
+    زر التشغيل يبقى موجود.
+  */
+
+  setTimeout(function(){
+
+    try{
+
+      player.seekTo(start,true);
+      player.playVideo();
+
+    }catch(e){}
+
+  },500);
+
+
+  /*
+    نراقب الوقت ونوقف الفيديو
+    بالضبط عند النهاية.
+  */
+
+  const timer=setInterval(function(){
+
+    try{
+
+      if(player.getPlayerState()===YT.PlayerState.PLAYING){
+
+        const current=player.getCurrentTime();
+
+        if(current>=end){
+
+          player.pauseVideo();
+          player.seekTo(start,true);
+
+        }
+
+      }
+
+    }catch(e){}
+
+  },250);
+
+
+  /*
+    زر احتياطي إذا autoplay ممنوع.
+  */
+
+  setTimeout(function(){
+
+    const button=document.getElementById(buttonId);
+
+    if(button){
+
+      button.style.display="inline-block";
+
+    }
+
+  },1200);
+
+}
+
+
+/* ===============================
+   PLAY BUTTONS
+=============================== */
+
+function playPhotosSong(){
+
+  if(photosPlayer){
+
+    photosPlayer.seekTo(65,true);
+    photosPlayer.playVideo();
+
+  }
+
+}
+
+
+function playOurSong(){
+
+  if(ourSongPlayer){
+
+    ourSongPlayer.seekTo(45,true);
+    ourSongPlayer.playVideo();
+
+  }
+
+}
+
+
+function playLetterSong(){
+
+  if(letterPlayer){
+
+    letterPlayer.seekTo(28,true);
+    letterPlayer.playVideo();
+
+  }
+
+}
+
+
+/* ==========================================
+   LOCK
+========================================== */
 
 function unlock(){
 
   const pin=document.getElementById("pin").value;
+
   const error=document.getElementById("error");
 
   if(pin==="1614"){
@@ -963,20 +1199,48 @@ function unlock(){
 
 }
 
+
 document
 .getElementById("pin")
 .addEventListener("keydown",function(e){
 
   if(e.key==="Enter"){
+
     unlock();
+
   }
 
 });
 
 
-/* ================= PAGE NAVIGATION ================= */
+/* ==========================================
+   PAGE NAVIGATION
+========================================== */
+
+function stopAllMusic(){
+
+  try{
+
+    if(photosPlayer){
+      photosPlayer.pauseVideo();
+    }
+
+    if(ourSongPlayer){
+      ourSongPlayer.pauseVideo();
+    }
+
+    if(letterPlayer){
+      letterPlayer.pauseVideo();
+    }
+
+  }catch(e){}
+
+}
+
 
 function openPage(id){
+
+  stopAllMusic();
 
   document
   .querySelectorAll(".page")
@@ -986,20 +1250,55 @@ function openPage(id){
 
   });
 
+
   const target=document.getElementById(id);
 
   if(target){
+
     target.classList.add("active");
+
   }
 
+
   window.scrollTo(0,0);
+
+
+  /*
+    تشغيل الأغنية تلقائياً عند الدخول
+    للصفحة.
+  */
+
+  setTimeout(function(){
+
+    if(id==="photosPage"){
+
+      playPhotosSong();
+
+    }
+
+    if(id==="musicPage"){
+
+      playOurSong();
+
+    }
+
+    if(id==="letterPage"){
+
+      playLetterSong();
+
+    }
+
+  },700);
 
 }
 
 
-/* ================= QUESTION ================= */
+/* ==========================================
+   QUESTION
+========================================== */
 
 let yesScale=1;
+
 
 document
 .getElementById("no")
@@ -1025,7 +1324,9 @@ document
 });
 
 
-/* ================= LETTER ANIMATION ================= */
+/* ==========================================
+   LETTER HEART
+========================================== */
 
 function startLetter(){
 
@@ -1038,10 +1339,13 @@ function startLetter(){
   const om=
     document.getElementById("om");
 
+
   transition.classList.add("show");
 
   heart.classList.remove("break");
+
   om.classList.remove("show");
+
 
   setTimeout(function(){
 
@@ -1049,11 +1353,13 @@ function startLetter(){
 
   },900);
 
+
   setTimeout(function(){
 
     om.classList.add("show");
 
   },1500);
+
 
   setTimeout(function(){
 
