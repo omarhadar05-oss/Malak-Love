@@ -3,19 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>إلى ملاك ❤️</title>
+<title>Malak ❤️</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
-  background:linear-gradient(135deg,#fff0f6,#ffe3ee);
-  color:#4b2637;
   font-family:Arial,Tahoma,sans-serif;
+  background:linear-gradient(135deg,#fff0f6,#ffe2ed);
+  color:#4b2637;
   overflow-x:hidden;
 }
 
@@ -24,7 +21,48 @@ button{
   cursor:pointer;
 }
 
-/* ================= القفل ================= */
+/* =========================
+   GENERAL
+========================= */
+
+.page{
+  display:none;
+  min-height:100vh;
+  padding:25px 18px;
+}
+
+.page.active{
+  display:block;
+}
+
+.center{
+  width:min(900px,100%);
+  margin:auto;
+  text-align:center;
+}
+
+.title{
+  color:#d95787;
+  text-align:center;
+  font-size:34px;
+  margin:15px 0 35px;
+}
+
+.back{
+  display:block;
+  margin:35px auto 10px;
+  border:0;
+  background:white;
+  color:#d95787;
+  padding:12px 28px;
+  border-radius:50px;
+  font-weight:bold;
+  box-shadow:0 8px 25px rgba(160,60,100,.15);
+}
+
+/* =========================
+   LOCK
+========================= */
 
 #lock{
   position:fixed;
@@ -39,11 +77,11 @@ button{
 
 .lock-box{
   width:min(420px,100%);
-  background:white;
-  padding:35px 25px;
+  background:#fff;
   border-radius:30px;
+  padding:35px 25px;
   text-align:center;
-  box-shadow:0 20px 60px rgba(180,70,110,.2);
+  box-shadow:0 20px 60px rgba(170,70,110,.2);
 }
 
 .lock-icon{
@@ -51,7 +89,7 @@ button{
 }
 
 .lock-box h1{
-  color:#d95687;
+  color:#d95787;
 }
 
 .lock-box p{
@@ -61,52 +99,42 @@ button{
 #pin{
   width:100%;
   border:0;
+  outline:0;
   border-bottom:2px solid #efa0bf;
-  outline:none;
+  background:transparent;
   text-align:center;
   font-size:30px;
   letter-spacing:12px;
   padding:12px;
-  background:transparent;
 }
 
-.unlock-btn{
+.unlock{
   margin-top:25px;
   border:0;
-  border-radius:50px;
-  background:#e96799;
+  background:#e96899;
   color:white;
   padding:14px 30px;
+  border-radius:50px;
   font-size:18px;
   font-weight:bold;
 }
 
 #error{
   height:25px;
-  color:#d74b78;
+  color:#d74d79;
   margin-top:10px;
 }
 
-/* ================= الصفحات ================= */
+/* =========================
+   QUESTION
+========================= */
 
-.page{
-  display:none;
-  min-height:100vh;
-  padding:30px 18px;
-}
-
-.page.active{
-  display:block;
-}
-
-/* ================= السؤال ================= */
-
-.question-page{
+#questionPage{
   align-items:center;
   justify-content:center;
 }
 
-.question-page.active{
+#questionPage.active{
   display:flex;
 }
 
@@ -116,7 +144,7 @@ button{
   border-radius:30px;
   padding:45px 25px;
   text-align:center;
-  box-shadow:0 20px 60px rgba(180,70,110,.15);
+  box-shadow:0 20px 60px rgba(170,70,110,.15);
 }
 
 .question-heart{
@@ -124,13 +152,12 @@ button{
 }
 
 .question-box h1{
+  color:#d95787;
   font-size:38px;
-  color:#d95687;
 }
 
 .question-box p{
   color:#987080;
-  font-size:18px;
 }
 
 .answers{
@@ -140,41 +167,43 @@ button{
   margin-top:30px;
 }
 
-.yes-btn,
-.no-btn{
-  border-radius:50px;
+.yes,
+.no{
   padding:14px 30px;
+  border-radius:50px;
   font-size:18px;
   font-weight:bold;
 }
 
-.yes-btn{
-  background:#e96799;
-  color:white;
+.yes{
   border:0;
+  background:#e96899;
+  color:#fff;
 }
 
-.no-btn{
-  background:white;
-  color:#d95687;
+.no{
   border:2px solid #efa0bf;
+  background:#fff;
+  color:#d95787;
 }
 
 #answerText{
-  color:#d95687;
   min-height:25px;
   margin-top:20px;
+  color:#d95787;
   font-weight:bold;
 }
 
-/* ================= الهدايا ================= */
+/* =========================
+   GIFTS
+========================= */
 
-.gifts-page{
+#giftsPage{
   align-items:center;
   justify-content:center;
 }
 
-.gifts-page.active{
+#giftsPage.active{
   display:flex;
 }
 
@@ -184,29 +213,29 @@ button{
 
 .gifts-wrapper h1{
   text-align:center;
-  color:#d95687;
+  color:#d95787;
   margin-bottom:45px;
 }
 
 .gifts{
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   gap:25px;
 }
 
 .gift{
-  width:33.333%;
+  width:30%;
   min-height:210px;
   border:0;
   border-radius:30px;
   background:white;
-  box-shadow:0 15px 45px rgba(180,70,110,.15);
+  box-shadow:0 15px 45px rgba(170,70,110,.15);
   transition:.25s;
   padding:25px 15px;
 }
 
 .gift:hover{
-  transform:translateY(-10px);
+  transform:translateY(-9px);
 }
 
 .gift-icon{
@@ -214,35 +243,16 @@ button{
 }
 
 .gift h2{
-  color:#d95687;
+  color:#d95787;
 }
 
 .gift p{
   color:#987080;
 }
 
-/* ================= العناوين ================= */
-
-.title{
-  text-align:center;
-  color:#d95687;
-  font-size:35px;
-  margin:10px 0 35px;
-}
-
-.back{
-  display:block;
-  margin:35px auto;
-  border:0;
-  border-radius:50px;
-  padding:12px 25px;
-  background:white;
-  color:#d95687;
-  font-weight:bold;
-  box-shadow:0 8px 25px rgba(180,70,110,.15);
-}
-
-/* ================= الصور ================= */
+/* =========================
+   PHOTOS
+========================= */
 
 .photo-grid{
   width:min(950px,100%);
@@ -254,8 +264,8 @@ button{
 
 .photo{
   background:white;
-  padding:9px 9px 25px;
-  box-shadow:0 10px 30px rgba(120,50,80,.2);
+  padding:9px 9px 22px;
+  box-shadow:0 10px 30px rgba(100,40,70,.2);
 }
 
 .photo:nth-child(odd){
@@ -267,21 +277,23 @@ button{
 }
 
 .photo img{
-  display:block;
   width:100%;
   height:240px;
   object-fit:cover;
+  display:block;
 }
 
-/* ================= الأغنية ================= */
+/* =========================
+   MUSIC
+========================= */
 
 .music-page{
-  overflow:hidden;
+  position:relative;
 }
 
 .music-stage{
   width:min(900px,100%);
-  min-height:650px;
+  min-height:620px;
   margin:auto;
   position:relative;
   display:flex;
@@ -296,53 +308,28 @@ button{
   background:
     repeating-radial-gradient(
       circle,
-      #101010 0,
-      #101010 4px,
+      #111 0px,
+      #111 4px,
       #292929 5px,
-      #101010 7px
+      #111 7px
     );
   box-shadow:0 20px 55px rgba(0,0,0,.35);
   display:flex;
   align-items:center;
   justify-content:center;
   animation:spin 5s linear infinite;
-  position:relative;
-  z-index:5;
 }
 
-.record-center{
+.record-cover{
   width:115px;
   height:115px;
   border-radius:50%;
-  overflow:hidden;
-  position:relative;
-}
-
-.record-center img{
-  width:100%;
-  height:100%;
   object-fit:cover;
 }
 
-.record-center:after{
-  content:"";
-  width:10px;
-  height:10px;
-  background:white;
-  border-radius:50%;
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-}
-
 @keyframes spin{
-  from{
-    transform:rotate(0deg);
-  }
-  to{
-    transform:rotate(360deg);
-  }
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
 
 .music-photo{
@@ -350,63 +337,60 @@ button{
   width:115px;
   background:white;
   padding:7px 7px 18px;
-  box-shadow:0 10px 25px rgba(120,50,80,.25);
-  z-index:3;
+  box-shadow:0 10px 25px rgba(100,40,70,.25);
 }
 
 .music-photo img{
   width:100%;
-  height:125px;
+  height:120px;
   object-fit:cover;
 }
 
-.mp1{
+.p1{
   top:10px;
   left:5%;
-  transform:rotate(-10deg);
+  transform:rotate(-9deg);
 }
 
-.mp2{
-  top:65px;
+.p2{
+  top:60px;
   right:5%;
-  transform:rotate(9deg);
-}
-
-.mp3{
-  bottom:55px;
-  left:4%;
   transform:rotate(8deg);
 }
 
-.mp4{
+.p3{
+  bottom:50px;
+  left:4%;
+  transform:rotate(7deg);
+}
+
+.p4{
   bottom:25px;
   right:5%;
   transform:rotate(-8deg);
 }
 
-.mp5{
-  top:0;
-  left:42%;
-  transform:rotate(5deg);
-}
-
-.mp6{
-  bottom:0;
-  right:42%;
-  transform:rotate(-5deg);
-}
-
-.music-info{
-  text-align:center;
-  color:#d95687;
-  font-weight:bold;
+.music-player{
   margin-top:25px;
+  width:min(420px,90vw);
+  height:80px;
+  border:0;
+  border-radius:15px;
 }
 
-/* ================= الرسالة ================= */
+.music-description{
+  text-align:center;
+  color:#d95787;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+/* =========================
+   LETTER
+========================= */
 
 .letter-layout{
-  width:min(1050px,100%);
+  width:min(1000px,100%);
   margin:auto;
   display:flex;
   align-items:center;
@@ -418,38 +402,37 @@ button{
   background:white;
   border-radius:30px;
   padding:35px 25px;
-  box-shadow:0 15px 50px rgba(180,70,110,.15);
   text-align:center;
-  font-size:19px;
   line-height:2;
+  font-size:19px;
+  box-shadow:0 15px 50px rgba(170,70,110,.15);
 }
 
 .letter-icon{
   font-size:55px;
 }
 
-.letter-record-area{
+.small-record-box{
   width:220px;
   text-align:center;
-  flex-shrink:0;
 }
 
 .small-record{
   width:185px;
   height:185px;
-  margin:auto;
   border-radius:50%;
+  margin:auto;
   background:
     repeating-radial-gradient(
       circle,
-      #101010 0,
-      #101010 3px,
+      #111 0px,
+      #111 3px,
       #292929 4px,
-      #101010 6px
+      #111 6px
     );
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   animation:spin 5s linear infinite;
   box-shadow:0 15px 40px rgba(0,0,0,.3);
 }
@@ -457,11 +440,13 @@ button{
 .small-cover{
   width:75px;
   height:75px;
-  object-fit:cover;
   border-radius:50%;
+  object-fit:cover;
 }
 
-/* ================= القلب ================= */
+/* =========================
+   HEART TRANSITION
+========================= */
 
 #loveTransition{
   position:fixed;
@@ -477,56 +462,12 @@ button{
   display:flex;
 }
 
-#bigHeart{
+#heart{
   font-size:150px;
-  animation:heartIn 1s ease forwards;
+  animation:heartAppear 1s ease;
 }
 
-@keyframes heartIn{
-  0%{
-    transform:scale(.3);
-    opacity:0;
-  }
-  60%{
-    transform:scale(1.15);
-    opacity:1;
-  }
-  100%{
-    transform:scale(1);
-  }
-}
-
-#bigHeart.break{
-  animation:heartBreak 1s ease forwards;
-}
-
-@keyframes heartBreak{
-  0%{
-    transform:scale(1);
-    opacity:1;
-  }
-  45%{
-    transform:scale(1.2) rotate(5deg);
-  }
-  100%{
-    transform:scale(1.8) rotate(-8deg);
-    opacity:0;
-  }
-}
-
-#OM{
-  position:absolute;
-  font-size:55px;
-  font-weight:bold;
-  color:#d95687;
-  opacity:0;
-}
-
-#OM.show{
-  animation:omIn 1s ease forwards;
-}
-
-@keyframes omIn{
+@keyframes heartAppear{
   from{
     transform:scale(.2);
     opacity:0;
@@ -537,34 +478,56 @@ button{
   }
 }
 
-/* ================= قلوب ================= */
-
-#floatingHearts{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:300;
+#heart.break{
+  animation:heartBreak 1.1s forwards;
 }
 
-.float-heart{
-  position:absolute;
-  bottom:-40px;
-  animation:floatUp 4s linear forwards;
-}
-
-@keyframes floatUp{
-  to{
-    transform:translateY(-110vh);
+@keyframes heartBreak{
+  0%{
+    transform:scale(1);
+    opacity:1;
+  }
+  45%{
+    transform:scale(1.15) rotate(5deg);
+  }
+  100%{
+    transform:scale(1.8) rotate(-8deg);
     opacity:0;
   }
 }
 
-/* ================= موبايل ================= */
+#om{
+  position:absolute;
+  font-size:55px;
+  color:#d95787;
+  font-weight:bold;
+  opacity:0;
+}
+
+#om.show{
+  animation:omShow 1s forwards;
+}
+
+@keyframes omShow{
+  from{
+    transform:scale(.2);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
   .gifts{
     flex-direction:column;
+    align-items:center;
   }
 
   .gift{
@@ -585,7 +548,7 @@ button{
     height:250px;
   }
 
-  .record-center{
+  .record-cover{
     width:90px;
     height:90px;
   }
@@ -602,33 +565,17 @@ button{
     flex-direction:column;
   }
 
-  .letter-record-area{
+  .small-record-box{
     order:-1;
   }
 
   .small-record{
-    width:145px;
-    height:145px;
+    width:150px;
+    height:150px;
   }
 
   .question-box h1{
-    font-size:31px;
-  }
-}
-
-@media(max-width:450px){
-
-  .photo-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .music-stage{
-    min-height:620px;
-  }
-
-  .mp5,
-  .mp6{
-    display:none;
+    font-size:30px;
   }
 }
 </style>
@@ -636,7 +583,7 @@ button{
 
 <body>
 
-<!-- ================= القفل ================= -->
+<!-- ================= LOCK ================= -->
 
 <div id="lock">
 
@@ -656,9 +603,7 @@ button{
       placeholder="••••"
     >
 
-    <br>
-
-    <button class="unlock-btn" onclick="unlock()">
+    <button class="unlock" onclick="unlock()">
       فتح ❤️
     </button>
 
@@ -669,12 +614,9 @@ button{
 </div>
 
 
-<!-- ================= السؤال ================= -->
+<!-- ================= QUESTION ================= -->
 
-<section
-  id="questionPage"
-  class="page question-page"
->
+<section id="questionPage" class="page">
 
   <div class="question-box">
 
@@ -682,21 +624,15 @@ button{
 
     <h1>واش كتحبيني؟</h1>
 
-    <p>جاوبيني بصراحة... 🥹</p>
+    <p>جاوبيني بصراحة... 🥹❤️</p>
 
     <div class="answers">
 
-      <button
-        class="yes-btn"
-        id="yes"
-      >
+      <button class="yes" id="yes">
         YES ❤️
       </button>
 
-      <button
-        class="no-btn"
-        id="no"
-      >
+      <button class="no" id="no">
         NO 😭
       </button>
 
@@ -709,12 +645,9 @@ button{
 </section>
 
 
-<!-- ================= الهدايا ================= -->
+<!-- ================= GIFTS ================= -->
 
-<section
-  id="giftsPage"
-  class="page gifts-page"
->
+<section id="giftsPage" class="page">
 
   <div class="gifts-wrapper">
 
@@ -726,43 +659,29 @@ button{
 
       <button
         class="gift"
-        onclick="showPage('photosPage')"
+        onclick="openPage('photosPage')"
       >
-
         <div class="gift-icon">📸</div>
-
         <h2>صورنا</h2>
-
         <p>ذكرياتنا ❤️</p>
-
       </button>
-
 
       <button
         class="gift"
-        onclick="showPage('musicPage')"
+        onclick="openPage('musicPage')"
       >
-
         <div class="gift-icon">🎵</div>
-
         <h2>أغنيتنا</h2>
-
         <p>الأغنية ديالنا 🎶</p>
-
       </button>
-
 
       <button
         class="gift"
         onclick="startLetter()"
       >
-
         <div class="gift-icon">💌</div>
-
         <h2>رسالتي</h2>
-
         <p>شي حاجة من قلبي ❤️</p>
-
       </button>
 
     </div>
@@ -772,12 +691,9 @@ button{
 </section>
 
 
-<!-- ================= صفحة الصور ================= -->
+<!-- ================= PHOTOS PAGE ================= -->
 
-<section
-  id="photosPage"
-  class="page"
->
+<section id="photosPage" class="page">
 
   <h1 class="title">
     ذكرياتنا 📸❤️
@@ -786,56 +702,54 @@ button{
   <div class="photo-grid">
 
     <div class="photo">
-      <img src="image1.jpeg" alt="ذكرى">
+      <img src="image1.jpeg">
     </div>
 
     <div class="photo">
-      <img src="image2.jpeg" alt="ذكرى">
+      <img src="image2.jpeg">
     </div>
 
     <div class="photo">
-      <img src="image3.jpeg" alt="ذكرى">
+      <img src="image3.jpeg">
     </div>
 
     <div class="photo">
-      <img src="image4.jpeg" alt="ذكرى">
+      <img src="image4.jpeg">
     </div>
 
     <div class="photo">
-      <img src="image5.jpeg" alt="ذكرى">
+      <img src="image5.jpeg">
     </div>
 
     <div class="photo">
-      <img src="image6.jpeg" alt="ذكرى">
+      <img src="image6.jpeg">
     </div>
 
     <div class="photo">
-      <img src="image7.jpeg" alt="ذكرى">
+      <img src="image7.jpeg">
     </div>
 
     <div class="photo">
-      <img src="image8.jpeg" alt="ذكرى">
+      <img src="image8.jpeg">
     </div>
 
   </div>
 
-  <!-- أغنية الصور:
-       wgXToIp_460
+  <!-- أغنية الصور
        1:05 - 1:35
+       wgXToIp_460
   -->
 
   <iframe
-    id="photosAudio"
-    width="1"
-    height="1"
-    src="https://www.youtube.com/embed/wgXToIp_460?start=65&end=95&autoplay=1"
-    allow="autoplay"
-    style="opacity:0;position:absolute;pointer-events:none;"
-  ></iframe>
+    class="music-player"
+    src="https://www.youtube.com/embed/wgXToIp_460?start=65&end=95"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
 
   <button
     class="back"
-    onclick="showPage('giftsPage')"
+    onclick="openPage('giftsPage')"
   >
     ← رجوع للهدايا
   </button>
@@ -843,12 +757,9 @@ button{
 </section>
 
 
-<!-- ================= صفحة أغنيتنا ================= -->
+<!-- ================= OUR SONG PAGE ================= -->
 
-<section
-  id="musicPage"
-  class="page music-page"
->
+<section id="musicPage" class="page music-page">
 
   <h1 class="title">
     أغنيتنا 🎵❤️
@@ -856,74 +767,57 @@ button{
 
   <div class="music-stage">
 
-    <div class="music-photo mp1">
+    <div class="music-photo p1">
       <img src="image1.jpeg">
     </div>
 
-    <div class="music-photo mp2">
+    <div class="music-photo p2">
       <img src="image2.jpeg">
     </div>
 
-    <div class="music-photo mp3">
+    <div class="music-photo p3">
       <img src="image3.jpeg">
     </div>
 
-    <div class="music-photo mp4">
+    <div class="music-photo p4">
       <img src="image4.jpeg">
     </div>
-
-    <div class="music-photo mp5">
-      <img src="image5.jpeg">
-    </div>
-
-    <div class="music-photo mp6">
-      <img src="image6.jpeg">
-    </div>
-
 
     <div>
 
       <div class="record">
 
-        <div class="record-center">
-
-          <img
-            src="image1.jpeg"
-            alt="غلاف الأغنية"
-          >
-
-        </div>
+        <img
+          class="record-cover"
+          src="image1.jpeg"
+        >
 
       </div>
 
-      <div class="music-info">
+      <div class="music-description">
         أغنيتنا ❤️
         <br>
-        <small>0:45 — 1:26</small>
+        <small>المقطع 0:45 — 1:26</small>
       </div>
 
     </div>
 
   </div>
 
+  <div class="center">
 
-  <!-- ZvlzB5gUD-g
-       0:45 - 1:26
-  -->
+    <iframe
+      class="music-player"
+      src="https://www.youtube.com/embed/ZvlzB5gUD-g?start=45&end=86"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
 
-  <iframe
-    id="ourSong"
-    width="1"
-    height="1"
-    src="https://www.youtube.com/embed/ZvlzB5gUD-g?start=45&end=86&autoplay=1"
-    allow="autoplay"
-    style="opacity:0;position:absolute;pointer-events:none;"
-  ></iframe>
-
+  </div>
 
   <button
     class="back"
-    onclick="showPage('giftsPage')"
+    onclick="openPage('giftsPage')"
   >
     ← رجوع للهدايا
   </button>
@@ -931,15 +825,12 @@ button{
 </section>
 
 
-<!-- ================= صفحة الرسالة ================= -->
+<!-- ================= LETTER PAGE ================= -->
 
-<section
-  id="letterPage"
-  class="page"
->
+<section id="letterPage" class="page">
 
   <h1 class="title">
-    رسالة ليك 💌
+    رسالتي ليك 💌
   </h1>
 
   <div class="letter-layout">
@@ -968,20 +859,19 @@ button{
       </p>
 
       <p>
-        وبغيت نبقى ديما حدّاك، نفرح معاك
-        ونوقف معاك فكل وقت، وإن شاء الله
-        ربي يطول لينا فالعمر ونبقاو ديما مجموعين
-        وما يفرق بيناتنا والو.
+        وبغيت نبقى ديما حدّاك،
+        نفرح معاك ونوقف معاك فكل وقت.
       </p>
 
       <p>
-        المهم... بغيتك تعرفي غير حاجة وحدة:
+        وإن شاء الله ربي يطول لينا فالعمر
+        ونبقاو ديما مجموعين وما يفرق بيناتنا والو.
       </p>
 
       <p>
         <strong>
-          كنبغيك بزاف بزاف، ونتي بالنسبة ليا
-          ماشي شي وحدة عادية ❤️
+          كنبغيك بزاف بزاف،
+          ونتي بالنسبة ليا ماشي شي وحدة عادية ❤️
         </strong>
       </p>
 
@@ -992,45 +882,40 @@ button{
     </div>
 
 
-    <div class="letter-record-area">
+    <div class="small-record-box">
 
       <div class="small-record">
 
         <img
           class="small-cover"
           src="image2.jpeg"
-          alt="غلاف الأغنية"
         >
 
       </div>
 
-      <p style="color:#d95687;font-weight:bold">
+      <p style="color:#d95787;font-weight:bold">
         مقطع ليك ❤️
       </p>
+
+      <!-- أغنية الرسالة
+           0:28 - 1:30
+           DhBS7gTvmfc
+      -->
+
+      <iframe
+        class="music-player"
+        src="https://www.youtube.com/embed/DhBS7gTvmfc?start=28&end=90"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
 
     </div>
 
   </div>
 
-
-  <!-- أغنية الرسالة:
-       DhBS7gTvmfc
-       0:28 - 1:30
-  -->
-
-  <iframe
-    id="letterSong"
-    width="1"
-    height="1"
-    src="https://www.youtube.com/embed/DhBS7gTvmfc?start=28&end=90&autoplay=1"
-    allow="autoplay"
-    style="opacity:0;position:absolute;pointer-events:none;"
-  ></iframe>
-
-
   <button
     class="back"
-    onclick="showPage('giftsPage')"
+    onclick="openPage('giftsPage')"
   >
     ← رجوع للهدايا
   </button>
@@ -1038,42 +923,39 @@ button{
 </section>
 
 
-<!-- ================= انتقال القلب ================= -->
+<!-- ================= HEART TRANSITION ================= -->
 
 <div id="loveTransition">
 
-  <div id="bigHeart">
+  <div id="heart">
     ❤️
   </div>
 
-  <div id="OM">
+  <div id="om">
     O + M ❤️
   </div>
 
 </div>
 
 
-<div id="floatingHearts"></div>
-
-
 <script>
 
-/* ================= القفل ================= */
+/* ================= LOCK ================= */
 
 function unlock(){
 
   const pin=document.getElementById("pin").value;
+  const error=document.getElementById("error");
 
   if(pin==="1614"){
 
     document.getElementById("lock").style.display="none";
 
-    showPage("questionPage");
+    openPage("questionPage");
 
   }else{
 
-    document.getElementById("error").textContent=
-      "الرقم غلط 😭❤️";
+    error.textContent="الرقم غلط 😭❤️";
 
     document.getElementById("pin").value="";
 
@@ -1081,89 +963,69 @@ function unlock(){
 
 }
 
+document
+.getElementById("pin")
+.addEventListener("keydown",function(e){
 
-/* Enter */
-
-document.getElementById("pin").addEventListener(
-  "keydown",
-  function(e){
-
-    if(e.key==="Enter"){
-      unlock();
-    }
-
+  if(e.key==="Enter"){
+    unlock();
   }
-);
+
+});
 
 
-/* ================= الصفحات ================= */
+/* ================= PAGE NAVIGATION ================= */
 
-function showPage(id){
+function openPage(id){
 
   document
-    .querySelectorAll(".page")
-    .forEach(function(page){
+  .querySelectorAll(".page")
+  .forEach(function(page){
 
-      page.classList.remove("active");
+    page.classList.remove("active");
 
-    });
+  });
 
-  const page=document.getElementById(id);
+  const target=document.getElementById(id);
 
-  if(page){
-    page.classList.add("active");
+  if(target){
+    target.classList.add("active");
   }
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+  window.scrollTo(0,0);
 
 }
 
 
-/* ================= YES / NO ================= */
-
-const yes=document.getElementById("yes");
-
-const no=document.getElementById("no");
-
-const answerText=document.getElementById("answerText");
+/* ================= QUESTION ================= */
 
 let yesScale=1;
 
-
-no.addEventListener("click",function(){
+document
+.getElementById("no")
+.addEventListener("click",function(){
 
   yesScale+=.3;
 
-  yes.style.transform=
+  document.getElementById("yes").style.transform=
     "scale("+Math.min(yesScale,4)+")";
 
-  answerText.textContent=
+  document.getElementById("answerText").textContent=
     "لااا 😭 جربي YES ❤️";
 
 });
 
 
-yes.addEventListener("click",function(){
+document
+.getElementById("yes")
+.addEventListener("click",function(){
 
-  for(let i=0;i<30;i++){
-
-    setTimeout(createHeart,i*45);
-
-  }
-
-  setTimeout(function(){
-
-    showPage("giftsPage");
-
-  },700);
+  openPage("giftsPage");
 
 });
 
 
-/* ================= قلب الرسالة ================= */
+/* ================= LETTER ANIMATION ================= */
 
 function startLetter(){
 
@@ -1171,15 +1033,14 @@ function startLetter(){
     document.getElementById("loveTransition");
 
   const heart=
-    document.getElementById("bigHeart");
+    document.getElementById("heart");
 
   const om=
-    document.getElementById("OM");
+    document.getElementById("om");
 
   transition.classList.add("show");
 
   heart.classList.remove("break");
-
   om.classList.remove("show");
 
   setTimeout(function(){
@@ -1198,40 +1059,9 @@ function startLetter(){
 
     transition.classList.remove("show");
 
-    showPage("letterPage");
+    openPage("letterPage");
 
   },2800);
-
-}
-
-
-/* ================= القلوب ================= */
-
-function createHeart(){
-
-  const heart=document.createElement("div");
-
-  heart.className="float-heart";
-
-  heart.textContent=
-    ["❤️","💗","💕","💖","🌷"]
-    [Math.floor(Math.random()*5)];
-
-  heart.style.left=
-    Math.random()*100+"vw";
-
-  heart.style.fontSize=
-    (18+Math.random()*25)+"px";
-
-  document
-    .getElementById("floatingHearts")
-    .appendChild(heart);
-
-  setTimeout(function(){
-
-    heart.remove();
-
-  },4200);
 
 }
 
