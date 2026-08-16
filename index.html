@@ -1,201 +1,207 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>إلى ملاك ❤️</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,sans-serif;
-  background:#fff1f6;
-  color:#442333;
+  background:linear-gradient(135deg,#fff0f6,#ffe3ee);
+  color:#4b2637;
+  font-family:Arial,Tahoma,sans-serif;
   overflow-x:hidden;
 }
 
-button{font-family:inherit}
-
-.lock{
-  position:fixed;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#ffe3ee,#fff8fb);
-  z-index:100;
-  padding:24px;
-}
-
-.card{
-  width:min(430px,100%);
-  background:#fff;
-  border-radius:28px;
-  padding:30px 22px;
-  text-align:center;
-  box-shadow:0 18px 60px #c65d8a33;
-}
-
-.heart{font-size:52px}
-
-.card h1{
-  margin:8px 0;
-  font-size:28px;
-}
-
-.card p{color:#8b6274}
-
-.pin{
-  font-size:30px;
-  letter-spacing:12px;
-  text-align:center;
-  width:100%;
-  border:0;
-  border-bottom:2px solid #f19abb;
-  outline:0;
-  padding:12px;
-  background:transparent;
-  color:#442333;
-}
-
-.unlock{
-  margin-top:20px;
-  border:0;
-  border-radius:999px;
-  background:#ef6f9f;
-  color:#fff;
-  font-size:18px;
-  font-weight:700;
-  padding:13px 30px;
+button{
+  font-family:inherit;
   cursor:pointer;
 }
 
-.err{
-  height:24px;
-  color:#d44a78;
-  margin-top:8px;
+/* ================= القفل ================= */
+
+#lock{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#ffe0ec,#fff8fb);
 }
+
+.lock-box{
+  width:min(420px,100%);
+  background:white;
+  padding:35px 25px;
+  border-radius:30px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(180,70,110,.2);
+}
+
+.lock-icon{
+  font-size:65px;
+}
+
+.lock-box h1{
+  color:#d95687;
+}
+
+.lock-box p{
+  color:#987080;
+}
+
+#pin{
+  width:100%;
+  border:0;
+  border-bottom:2px solid #efa0bf;
+  outline:none;
+  text-align:center;
+  font-size:30px;
+  letter-spacing:12px;
+  padding:12px;
+  background:transparent;
+}
+
+.unlock-btn{
+  margin-top:25px;
+  border:0;
+  border-radius:50px;
+  background:#e96799;
+  color:white;
+  padding:14px 30px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+#error{
+  height:25px;
+  color:#d74b78;
+  margin-top:10px;
+}
+
+/* ================= الصفحات ================= */
 
 .page{
   display:none;
   min-height:100vh;
-  padding:35px 20px;
+  padding:30px 18px;
 }
 
-.page.active{display:block}
-
-.center{
-  max-width:900px;
-  margin:auto;
-  text-align:center;
+.page.active{
+  display:block;
 }
 
-/* السؤال */
+/* ================= السؤال ================= */
 
-.question{
-  min-height:100vh;
-  display:none;
+.question-page{
   align-items:center;
   justify-content:center;
 }
 
-.question.active{display:flex}
+.question-page.active{
+  display:flex;
+}
 
 .question-box{
+  width:min(500px,100%);
   background:white;
   border-radius:30px;
   padding:45px 25px;
-  width:min(500px,100%);
-  box-shadow:0 15px 50px #9b416622;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(180,70,110,.15);
+}
+
+.question-heart{
+  font-size:65px;
 }
 
 .question-box h1{
   font-size:38px;
-  color:#d95386;
-  margin:15px 0;
+  color:#d95687;
 }
 
 .question-box p{
+  color:#987080;
   font-size:18px;
-  color:#8b6274;
 }
 
-.yesno{
+.answers{
   display:flex;
   justify-content:center;
   gap:18px;
   margin-top:30px;
 }
 
-.btn{
-  border:0;
-  border-radius:999px;
-  padding:15px 32px;
+.yes-btn,
+.no-btn{
+  border-radius:50px;
+  padding:14px 30px;
   font-size:18px;
-  font-weight:800;
-  cursor:pointer;
-  transition:.2s;
+  font-weight:bold;
 }
 
-.yes{
-  background:#ef6f9f;
+.yes-btn{
+  background:#e96799;
   color:white;
+  border:0;
 }
 
-.no{
+.no-btn{
   background:white;
-  color:#d95386;
-  border:2px solid #efb0c7;
+  color:#d95687;
+  border:2px solid #efa0bf;
 }
 
-#reply{
+#answerText{
+  color:#d95687;
+  min-height:25px;
   margin-top:20px;
-  color:#d95386;
-  font-weight:800;
-  min-height:30px;
+  font-weight:bold;
 }
 
-/* الهدايا */
+/* ================= الهدايا ================= */
 
-.gifts{
-  min-height:100vh;
-  display:none;
+.gifts-page{
   align-items:center;
   justify-content:center;
 }
 
-.gifts.active{display:flex}
+.gifts-page.active{
+  display:flex;
+}
 
-.gift-container{
+.gifts-wrapper{
   width:min(950px,100%);
 }
 
-.gift-title{
+.gifts-wrapper h1{
   text-align:center;
-  color:#d95386;
-  font-size:35px;
+  color:#d95687;
   margin-bottom:45px;
 }
 
-.gift-row{
+.gifts{
   display:flex;
   justify-content:space-between;
-  align-items:center;
   gap:25px;
 }
 
 .gift{
-  width:30%;
-  min-height:190px;
+  width:33.333%;
+  min-height:210px;
   border:0;
   border-radius:30px;
   background:white;
-  box-shadow:0 15px 40px #9b416622;
-  cursor:pointer;
+  box-shadow:0 15px 45px rgba(180,70,110,.15);
   transition:.25s;
-  color:#442333;
   padding:25px 15px;
 }
 
@@ -203,328 +209,361 @@ button{font-family:inherit}
   transform:translateY(-10px);
 }
 
-.gift-icon{font-size:60px}
+.gift-icon{
+  font-size:65px;
+}
 
 .gift h2{
-  margin:12px 0 5px;
-  color:#d95386;
+  color:#d95687;
 }
 
 .gift p{
-  margin:0;
-  color:#9a6b7e;
+  color:#987080;
 }
 
-/* العناوين */
+/* ================= العناوين ================= */
 
-.inner-title{
+.title{
   text-align:center;
-  color:#d95386;
-  font-size:36px;
-  margin-bottom:35px;
+  color:#d95687;
+  font-size:35px;
+  margin:10px 0 35px;
 }
 
 .back{
   display:block;
-  margin:35px auto 0;
+  margin:35px auto;
   border:0;
-  border-radius:999px;
+  border-radius:50px;
   padding:12px 25px;
-  background:#fff;
-  color:#d95386;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:0 5px 20px #9b416622;
+  background:white;
+  color:#d95687;
+  font-weight:bold;
+  box-shadow:0 8px 25px rgba(180,70,110,.15);
 }
 
-/* الصور */
+/* ================= الصور ================= */
 
 .photo-grid{
-  max-width:950px;
+  width:min(950px,100%);
   margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  grid-template-columns:repeat(4,1fr);
   gap:25px;
 }
 
 .photo{
   background:white;
-  padding:10px 10px 25px;
-  box-shadow:0 10px 30px #9b416633;
-  transform:rotate(var(--r));
+  padding:9px 9px 25px;
+  box-shadow:0 10px 30px rgba(120,50,80,.2);
+}
+
+.photo:nth-child(odd){
+  transform:rotate(-3deg);
+}
+
+.photo:nth-child(even){
+  transform:rotate(3deg);
 }
 
 .photo img{
-  width:100%;
-  height:270px;
-  object-fit:cover;
   display:block;
+  width:100%;
+  height:240px;
+  object-fit:cover;
 }
 
-/* الأسطوانة */
+/* ================= الأغنية ================= */
 
 .music-page{
-  position:relative;
   overflow:hidden;
 }
 
-.music-area{
-  position:relative;
-  max-width:900px;
+.music-stage{
+  width:min(900px,100%);
   min-height:650px;
   margin:auto;
+  position:relative;
   display:flex;
   align-items:center;
   justify-content:center;
-}
-
-.song-box{
-  width:min(500px,80%);
-  position:relative;
-  z-index:5;
-  text-align:center;
 }
 
 .record{
   width:330px;
   height:330px;
-  margin:auto;
   border-radius:50%;
   background:
     repeating-radial-gradient(
       circle,
-      #111 0px,
-      #111 4px,
+      #101010 0,
+      #101010 4px,
       #292929 5px,
-      #111 7px
+      #101010 7px
     );
-  box-shadow:
-    0 20px 50px #0005,
-    inset 0 0 25px #000;
+  box-shadow:0 20px 55px rgba(0,0,0,.35);
   display:flex;
   align-items:center;
   justify-content:center;
   animation:spin 5s linear infinite;
-}
-
-.record::before{
-  content:"";
-  width:112px;
-  height:112px;
-  border-radius:50%;
-  background:#ef6f9f;
-  position:absolute;
-}
-
-.cover{
-  width:105px;
-  height:105px;
-  border-radius:50%;
-  object-fit:cover;
   position:relative;
-  z-index:2;
+  z-index:5;
 }
 
-.record-hole{
-  position:absolute;
+.record-center{
+  width:115px;
+  height:115px;
+  border-radius:50%;
+  overflow:hidden;
+  position:relative;
+}
+
+.record-center img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.record-center:after{
+  content:"";
   width:10px;
   height:10px;
   background:white;
   border-radius:50%;
-  z-index:3;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
 }
 
 @keyframes spin{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
 }
-
-.song-name{
-  text-align:center;
-  font-weight:800;
-  color:#d95386;
-  font-size:21px;
-  margin-top:25px;
-}
-
-/* الصور حول الأسطوانة */
 
 .music-photo{
   position:absolute;
-  width:110px;
+  width:115px;
   background:white;
   padding:7px 7px 18px;
-  box-shadow:0 10px 25px #9b416644;
-  z-index:2;
+  box-shadow:0 10px 25px rgba(120,50,80,.25);
+  z-index:3;
 }
 
 .music-photo img{
   width:100%;
-  height:120px;
+  height:125px;
   object-fit:cover;
 }
 
-.m1{top:15px;left:5%;transform:rotate(-10deg)}
-.m2{top:70px;right:5%;transform:rotate(9deg)}
-.m3{bottom:50px;left:4%;transform:rotate(8deg)}
-.m4{bottom:25px;right:6%;transform:rotate(-8deg)}
-.m5{top:0;left:42%;transform:rotate(5deg)}
-.m6{bottom:0;right:42%;transform:rotate(-5deg)}
+.mp1{
+  top:10px;
+  left:5%;
+  transform:rotate(-10deg);
+}
 
-/* رسالة */
+.mp2{
+  top:65px;
+  right:5%;
+  transform:rotate(9deg);
+}
 
-.letter{
-  max-width:700px;
-  margin:auto;
-  background:white;
-  padding:40px 28px;
-  border-radius:30px;
-  box-shadow:0 15px 50px #9b416622;
-  font-size:20px;
-  line-height:2.1;
+.mp3{
+  bottom:55px;
+  left:4%;
+  transform:rotate(8deg);
+}
+
+.mp4{
+  bottom:25px;
+  right:5%;
+  transform:rotate(-8deg);
+}
+
+.mp5{
+  top:0;
+  left:42%;
+  transform:rotate(5deg);
+}
+
+.mp6{
+  bottom:0;
+  right:42%;
+  transform:rotate(-5deg);
+}
+
+.music-info{
   text-align:center;
+  color:#d95687;
+  font-weight:bold;
+  margin-top:25px;
 }
 
-.letter .emoji{
-  font-size:55px;
-  margin-bottom:10px;
-}
-
-/* الأسطوانة الصغيرة للرسالة */
+/* ================= الرسالة ================= */
 
 .letter-layout{
-  max-width:1000px;
+  width:min(1050px,100%);
   margin:auto;
   display:flex;
   align-items:center;
-  gap:40px;
-  direction:ltr;
+  gap:45px;
 }
 
-.letter-music{
-  width:230px;
-  flex-shrink:0;
+.letter{
+  flex:1;
+  background:white;
+  border-radius:30px;
+  padding:35px 25px;
+  box-shadow:0 15px 50px rgba(180,70,110,.15);
   text-align:center;
+  font-size:19px;
+  line-height:2;
+}
+
+.letter-icon{
+  font-size:55px;
+}
+
+.letter-record-area{
+  width:220px;
+  text-align:center;
+  flex-shrink:0;
 }
 
 .small-record{
-  width:190px;
-  height:190px;
-  border-radius:50%;
+  width:185px;
+  height:185px;
   margin:auto;
+  border-radius:50%;
   background:
     repeating-radial-gradient(
       circle,
-      #111 0px,
-      #111 3px,
+      #101010 0,
+      #101010 3px,
       #292929 4px,
-      #111 6px
+      #101010 6px
     );
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   animation:spin 5s linear infinite;
-  box-shadow:0 15px 35px #0004;
+  box-shadow:0 15px 40px rgba(0,0,0,.3);
 }
 
 .small-cover{
-  width:72px;
-  height:72px;
-  border-radius:50%;
+  width:75px;
+  height:75px;
   object-fit:cover;
+  border-radius:50%;
 }
 
-.letter-content{
-  flex:1;
-  direction:rtl;
-}
+/* ================= القلب ================= */
 
-footer{
-  text-align:center;
-  padding:35px;
-  color:#9a6b7e;
-}
-
-/* شاشة القلب */
-
-.heart-transition{
+#loveTransition{
   position:fixed;
   inset:0;
-  background:#fff1f6;
   z-index:200;
+  background:#fff0f6;
   display:none;
   align-items:center;
   justify-content:center;
 }
 
-.heart-transition.show{
+#loveTransition.show{
   display:flex;
 }
 
-.big-heart{
+#bigHeart{
   font-size:150px;
-  animation:heartBeat 1s ease-in-out;
+  animation:heartIn 1s ease forwards;
 }
 
-@keyframes heartBeat{
-  0%{transform:scale(.4);opacity:0}
-  50%{transform:scale(1.15);opacity:1}
-  100%{transform:scale(1);opacity:1}
+@keyframes heartIn{
+  0%{
+    transform:scale(.3);
+    opacity:0;
+  }
+  60%{
+    transform:scale(1.15);
+    opacity:1;
+  }
+  100%{
+    transform:scale(1);
+  }
 }
 
-.cracked{
-  animation:crack 1.2s forwards;
+#bigHeart.break{
+  animation:heartBreak 1s ease forwards;
 }
 
-@keyframes crack{
-  0%{transform:scale(1);opacity:1}
-  60%{transform:scale(1.2) rotate(4deg)}
-  100%{transform:scale(1.7);opacity:0}
+@keyframes heartBreak{
+  0%{
+    transform:scale(1);
+    opacity:1;
+  }
+  45%{
+    transform:scale(1.2) rotate(5deg);
+  }
+  100%{
+    transform:scale(1.8) rotate(-8deg);
+    opacity:0;
+  }
 }
 
-.om{
+#OM{
   position:absolute;
   font-size:55px;
-  font-weight:900;
-  color:#d95386;
+  font-weight:bold;
+  color:#d95687;
   opacity:0;
 }
 
-.om.show{
-  animation:showOM 1.2s forwards;
+#OM.show{
+  animation:omIn 1s ease forwards;
 }
 
-@keyframes showOM{
-  from{transform:scale(.3);opacity:0}
-  to{transform:scale(1);opacity:1}
+@keyframes omIn{
+  from{
+    transform:scale(.2);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
 }
 
-#hearts{
+/* ================= قلوب ================= */
+
+#floatingHearts{
   position:fixed;
   inset:0;
   pointer-events:none;
   z-index:300;
 }
 
-.float{
+.float-heart{
   position:absolute;
-  animation:up 4s linear forwards;
+  bottom:-40px;
+  animation:floatUp 4s linear forwards;
 }
 
-@keyframes up{
-  from{
-    transform:translateY(0);
-    opacity:1;
-  }
+@keyframes floatUp{
   to{
     transform:translateY(-110vh);
     opacity:0;
   }
 }
 
-@media(max-width:650px){
+/* ================= موبايل ================= */
 
-  .gift-row{
+@media(max-width:700px){
+
+  .gifts{
     flex-direction:column;
   }
 
@@ -532,8 +571,23 @@ footer{
     width:90%;
   }
 
-  .music-area{
-    min-height:680px;
+  .photo-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+  }
+
+  .photo img{
+    height:190px;
+  }
+
+  .record{
+    width:250px;
+    height:250px;
+  }
+
+  .record-center{
+    width:90px;
+    height:90px;
   }
 
   .music-photo{
@@ -544,38 +598,37 @@ footer{
     height:80px;
   }
 
-  .record{
-    width:250px;
-    height:250px;
-  }
-
-  .cover{
-    width:82px;
-    height:82px;
-  }
-
-  .m1{top:20px;left:2%}
-  .m2{top:70px;right:2%}
-  .m3{bottom:80px;left:2%}
-  .m4{bottom:55px;right:2%}
-  .m5{top:0;left:38%}
-  .m6{bottom:10px;right:38%}
-
   .letter-layout{
     flex-direction:column;
   }
 
-  .letter-music{
-    order:2;
-  }
-
-  .letter-content{
-    order:1;
+  .letter-record-area{
+    order:-1;
   }
 
   .small-record{
-    width:150px;
-    height:150px;
+    width:145px;
+    height:145px;
+  }
+
+  .question-box h1{
+    font-size:31px;
+  }
+}
+
+@media(max-width:450px){
+
+  .photo-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .music-stage{
+    min-height:620px;
+  }
+
+  .mp5,
+  .mp6{
+    display:none;
   }
 }
 </style>
@@ -583,81 +636,98 @@ footer{
 
 <body>
 
-<!-- القفل -->
+<!-- ================= القفل ================= -->
 
-<div class="lock" id="lock">
+<div id="lock">
 
-  <div class="card">
+  <div class="lock-box">
 
-    <div class="heart">💗</div>
+    <div class="lock-icon">🔒❤️</div>
 
-    <h1>عندك رسالة خاصة</h1>
+    <h1>عندك حاجة خاصة 💗</h1>
 
-    <p>دخلي الرقم السري عشان تفتحيها 🌷</p>
+    <p>دخلي الرقم السري باش تفتحيها</p>
 
     <input
       id="pin"
-      class="pin"
+      type="tel"
       inputmode="numeric"
       maxlength="4"
       placeholder="••••"
     >
 
-    <button class="unlock" onclick="unlock()">
-      فتح الرسالة ❤️
+    <br>
+
+    <button class="unlock-btn" onclick="unlock()">
+      فتح ❤️
     </button>
 
-    <div id="err" class="err"></div>
+    <div id="error"></div>
 
   </div>
 
 </div>
 
 
-<!-- السؤال -->
+<!-- ================= السؤال ================= -->
 
-<section class="page question" id="questionPage">
+<section
+  id="questionPage"
+  class="page question-page"
+>
 
-  <div class="question-box center">
+  <div class="question-box">
 
-    <div style="font-size:60px">❤️</div>
+    <div class="question-heart">❤️</div>
 
     <h1>واش كتحبيني؟</h1>
 
-    <p>جاوبيني بصراحة... 😭❤️</p>
+    <p>جاوبيني بصراحة... 🥹</p>
 
-    <div class="yesno">
+    <div class="answers">
 
-      <button class="btn yes" id="yes">
+      <button
+        class="yes-btn"
+        id="yes"
+      >
         YES ❤️
       </button>
 
-      <button class="btn no" id="no">
+      <button
+        class="no-btn"
+        id="no"
+      >
         NO 😭
       </button>
 
     </div>
 
-    <div id="reply"></div>
+    <div id="answerText"></div>
 
   </div>
 
 </section>
 
 
-<!-- الهدايا -->
+<!-- ================= الهدايا ================= -->
 
-<section class="page gifts" id="giftsPage">
+<section
+  id="giftsPage"
+  class="page gifts-page"
+>
 
-  <div class="gift-container">
+  <div class="gifts-wrapper">
 
-    <h1 class="gift-title">
+    <h1>
       عندك ثلاث هدايا 🎁❤️
     </h1>
 
-    <div class="gift-row">
+    <div class="gifts">
 
-      <button class="gift" onclick="showPage('photosPage')">
+      <button
+        class="gift"
+        onclick="showPage('photosPage')"
+      >
 
         <div class="gift-icon">📸</div>
 
@@ -667,23 +737,31 @@ footer{
 
       </button>
 
-      <button class="gift" onclick="showPage('musicPage')">
+
+      <button
+        class="gift"
+        onclick="showPage('musicPage')"
+      >
 
         <div class="gift-icon">🎵</div>
 
         <h2>أغنيتنا</h2>
 
-        <p>أغنية تذكرني فيك 🎶</p>
+        <p>الأغنية ديالنا 🎶</p>
 
       </button>
 
-      <button class="gift" onclick="startLetter()">
+
+      <button
+        class="gift"
+        onclick="startLetter()"
+      >
 
         <div class="gift-icon">💌</div>
 
         <h2>رسالتي</h2>
 
-        <p>شي من قلبي ليك ❤️</p>
+        <p>شي حاجة من قلبي ❤️</p>
 
       </button>
 
@@ -694,158 +772,470 @@ footer{
 </section>
 
 
-<!-- صفحة الصور -->
+<!-- ================= صفحة الصور ================= -->
 
-<section class="page" id="photosPage">
+<section
+  id="photosPage"
+  class="page"
+>
 
-  <div class="center">
-
-    <h1 class="inner-title">
-      ذكرياتنا 📸❤️
-    </h1>
-
-    <div class="photo-grid">
-
-      <div class="photo" style="--r:-3deg">
-        <img src="image1.jpeg" alt="صورة">
-      </div>
-
-      <div class="photo" style="--r:3deg">
-        <img src="image2.jpeg" alt="صورة">
-      </div>
-
-      <div class="photo" style="--r:-2deg">
-        <img src="image3.jpeg" alt="صورة">
-      </div>
-
-      <div class="photo" style="--r:4deg">
-        <img src="image4.jpeg" alt="صورة">
-      </div>
-
-      <div class="photo" style="--r:-4deg">
-        <img src="image5.jpeg" alt="صورة">
-      </div>
-
-      <div class="photo" style="--r:2deg">
-        <img src="image6.jpeg" alt="صورة">
-      </div>
-
-      <div class="photo" style="--r:-2deg">
-        <img src="image7.jpeg" alt="صورة">
-      </div>
-
-      <div class="photo" style="--r:3deg">
-        <img src="image8.jpeg" alt="صورة">
-      </div>
-
-    </div>
-
-    <button class="back" onclick="showPage('giftsPage')">
-      ← رجوع للهدايا
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- صفحة الأغنية -->
-
-<section class="page music-page" id="musicPage">
-
-  <h1 class="inner-title">
-    أغنيتنا 🎵❤️
+  <h1 class="title">
+    ذكرياتنا 📸❤️
   </h1>
 
-  <div class="music-area">
+  <div class="photo-grid">
 
-    <div class="music-photo m1">
-      <img src="image1.jpeg">
+    <div class="photo">
+      <img src="image1.jpeg" alt="ذكرى">
     </div>
 
-    <div class="music-photo m2">
-      <img src="image2.jpeg">
+    <div class="photo">
+      <img src="image2.jpeg" alt="ذكرى">
     </div>
 
-    <div class="music-photo m3">
-      <img src="image3.jpeg">
+    <div class="photo">
+      <img src="image3.jpeg" alt="ذكرى">
     </div>
 
-    <div class="music-photo m4">
-      <img src="image4.jpeg">
+    <div class="photo">
+      <img src="image4.jpeg" alt="ذكرى">
     </div>
 
-    <div class="music-photo m5">
-      <img src="image5.jpeg">
+    <div class="photo">
+      <img src="image5.jpeg" alt="ذكرى">
     </div>
 
-    <div class="music-photo m6">
-      <img src="image6.jpeg">
+    <div class="photo">
+      <img src="image6.jpeg" alt="ذكرى">
     </div>
 
-    <div class="song-box">
+    <div class="photo">
+      <img src="image7.jpeg" alt="ذكرى">
+    </div>
 
-      <div class="record">
-
-        <img
-          class="cover"
-          src="image1.jpeg"
-          alt="غلاف الأغنية"
-        >
-
-        <div class="record-hole"></div>
-
-      </div>
-
-      <div class="song-name">
-        أغنيتنا ❤️🎶
-      </div>
-
-      <div style="margin-top:15px;color:#9a6b7e">
-        المقطع: 0:45 — 1:26
-      </div>
-
-      <!-- YouTube -->
-      <div style="margin-top:20px">
-        <iframe
-          id="musicPlayer"
-          width="0"
-          height="0"
-          src="https://www.youtube.com/embed/ZvlzB5gUD-g?start=45&end=86"
-          allow="autoplay; encrypted-media"
-          style="border:0">
-        </iframe>
-      </div>
-
+    <div class="photo">
+      <img src="image8.jpeg" alt="ذكرى">
     </div>
 
   </div>
 
-  <button class="back" onclick="showPage('giftsPage')">
+  <!-- أغنية الصور:
+       wgXToIp_460
+       1:05 - 1:35
+  -->
+
+  <iframe
+    id="photosAudio"
+    width="1"
+    height="1"
+    src="https://www.youtube.com/embed/wgXToIp_460?start=65&end=95&autoplay=1"
+    allow="autoplay"
+    style="opacity:0;position:absolute;pointer-events:none;"
+  ></iframe>
+
+  <button
+    class="back"
+    onclick="showPage('giftsPage')"
+  >
     ← رجوع للهدايا
   </button>
 
 </section>
 
 
-<!-- صفحة الرسالة -->
+<!-- ================= صفحة أغنيتنا ================= -->
 
-<section class="page" id="letterPage">
+<section
+  id="musicPage"
+  class="page music-page"
+>
 
-  <h1 class="inner-title">
+  <h1 class="title">
+    أغنيتنا 🎵❤️
+  </h1>
+
+  <div class="music-stage">
+
+    <div class="music-photo mp1">
+      <img src="image1.jpeg">
+    </div>
+
+    <div class="music-photo mp2">
+      <img src="image2.jpeg">
+    </div>
+
+    <div class="music-photo mp3">
+      <img src="image3.jpeg">
+    </div>
+
+    <div class="music-photo mp4">
+      <img src="image4.jpeg">
+    </div>
+
+    <div class="music-photo mp5">
+      <img src="image5.jpeg">
+    </div>
+
+    <div class="music-photo mp6">
+      <img src="image6.jpeg">
+    </div>
+
+
+    <div>
+
+      <div class="record">
+
+        <div class="record-center">
+
+          <img
+            src="image1.jpeg"
+            alt="غلاف الأغنية"
+          >
+
+        </div>
+
+      </div>
+
+      <div class="music-info">
+        أغنيتنا ❤️
+        <br>
+        <small>0:45 — 1:26</small>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ZvlzB5gUD-g
+       0:45 - 1:26
+  -->
+
+  <iframe
+    id="ourSong"
+    width="1"
+    height="1"
+    src="https://www.youtube.com/embed/ZvlzB5gUD-g?start=45&end=86&autoplay=1"
+    allow="autoplay"
+    style="opacity:0;position:absolute;pointer-events:none;"
+  ></iframe>
+
+
+  <button
+    class="back"
+    onclick="showPage('giftsPage')"
+  >
+    ← رجوع للهدايا
+  </button>
+
+</section>
+
+
+<!-- ================= صفحة الرسالة ================= -->
+
+<section
+  id="letterPage"
+  class="page"
+>
+
+  <h1 class="title">
     رسالة ليك 💌
   </h1>
 
   <div class="letter-layout">
 
-    <div class="letter-content">
+    <div class="letter">
 
-      <div class="letter">
+      <div class="letter-icon">
+        💌🌷
+      </div>
 
-        <div class="emoji">💌🌷</div>
-
+      <p>
         ملاك ❤️
+      </p>
 
-        <br><br>
+      <p>
+        بغيت غير نقولك بلي كنبغيك بزاف،
+        ويمكن ما كنعرفش ديما نعبر ليك على
+        كلشي اللي كاين فقلبي، ولكن نتي عندك
+        بلاصة كبيرة عندي وماشي أي وحدة تقدر تاخدها.
+      </p>
 
-        بغيت غير نقولك بلي كنبغ
+      <p>
+        كيعجبني فيك كلشي، ضحكتك، طريقتك،
+        وحتى التفاصيل الصغيرة اللي يمكن نتي
+        ما كتعطيهاش أهمية، أنا كنبقى نتفكرها.
+      </p>
+
+      <p>
+        وبغيت نبقى ديما حدّاك، نفرح معاك
+        ونوقف معاك فكل وقت، وإن شاء الله
+        ربي يطول لينا فالعمر ونبقاو ديما مجموعين
+        وما يفرق بيناتنا والو.
+      </p>
+
+      <p>
+        المهم... بغيتك تعرفي غير حاجة وحدة:
+      </p>
+
+      <p>
+        <strong>
+          كنبغيك بزاف بزاف، ونتي بالنسبة ليا
+          ماشي شي وحدة عادية ❤️
+        </strong>
+      </p>
+
+      <p>
+        ديما ديالك ❤️🌷
+      </p>
+
+    </div>
+
+
+    <div class="letter-record-area">
+
+      <div class="small-record">
+
+        <img
+          class="small-cover"
+          src="image2.jpeg"
+          alt="غلاف الأغنية"
+        >
+
+      </div>
+
+      <p style="color:#d95687;font-weight:bold">
+        مقطع ليك ❤️
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- أغنية الرسالة:
+       DhBS7gTvmfc
+       0:28 - 1:30
+  -->
+
+  <iframe
+    id="letterSong"
+    width="1"
+    height="1"
+    src="https://www.youtube.com/embed/DhBS7gTvmfc?start=28&end=90&autoplay=1"
+    allow="autoplay"
+    style="opacity:0;position:absolute;pointer-events:none;"
+  ></iframe>
+
+
+  <button
+    class="back"
+    onclick="showPage('giftsPage')"
+  >
+    ← رجوع للهدايا
+  </button>
+
+</section>
+
+
+<!-- ================= انتقال القلب ================= -->
+
+<div id="loveTransition">
+
+  <div id="bigHeart">
+    ❤️
+  </div>
+
+  <div id="OM">
+    O + M ❤️
+  </div>
+
+</div>
+
+
+<div id="floatingHearts"></div>
+
+
+<script>
+
+/* ================= القفل ================= */
+
+function unlock(){
+
+  const pin=document.getElementById("pin").value;
+
+  if(pin==="1614"){
+
+    document.getElementById("lock").style.display="none";
+
+    showPage("questionPage");
+
+  }else{
+
+    document.getElementById("error").textContent=
+      "الرقم غلط 😭❤️";
+
+    document.getElementById("pin").value="";
+
+  }
+
+}
+
+
+/* Enter */
+
+document.getElementById("pin").addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key==="Enter"){
+      unlock();
+    }
+
+  }
+);
+
+
+/* ================= الصفحات ================= */
+
+function showPage(id){
+
+  document
+    .querySelectorAll(".page")
+    .forEach(function(page){
+
+      page.classList.remove("active");
+
+    });
+
+  const page=document.getElementById(id);
+
+  if(page){
+    page.classList.add("active");
+  }
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* ================= YES / NO ================= */
+
+const yes=document.getElementById("yes");
+
+const no=document.getElementById("no");
+
+const answerText=document.getElementById("answerText");
+
+let yesScale=1;
+
+
+no.addEventListener("click",function(){
+
+  yesScale+=.3;
+
+  yes.style.transform=
+    "scale("+Math.min(yesScale,4)+")";
+
+  answerText.textContent=
+    "لااا 😭 جربي YES ❤️";
+
+});
+
+
+yes.addEventListener("click",function(){
+
+  for(let i=0;i<30;i++){
+
+    setTimeout(createHeart,i*45);
+
+  }
+
+  setTimeout(function(){
+
+    showPage("giftsPage");
+
+  },700);
+
+});
+
+
+/* ================= قلب الرسالة ================= */
+
+function startLetter(){
+
+  const transition=
+    document.getElementById("loveTransition");
+
+  const heart=
+    document.getElementById("bigHeart");
+
+  const om=
+    document.getElementById("OM");
+
+  transition.classList.add("show");
+
+  heart.classList.remove("break");
+
+  om.classList.remove("show");
+
+  setTimeout(function(){
+
+    heart.classList.add("break");
+
+  },900);
+
+  setTimeout(function(){
+
+    om.classList.add("show");
+
+  },1500);
+
+  setTimeout(function(){
+
+    transition.classList.remove("show");
+
+    showPage("letterPage");
+
+  },2800);
+
+}
+
+
+/* ================= القلوب ================= */
+
+function createHeart(){
+
+  const heart=document.createElement("div");
+
+  heart.className="float-heart";
+
+  heart.textContent=
+    ["❤️","💗","💕","💖","🌷"]
+    [Math.floor(Math.random()*5)];
+
+  heart.style.left=
+    Math.random()*100+"vw";
+
+  heart.style.fontSize=
+    (18+Math.random()*25)+"px";
+
+  document
+    .getElementById("floatingHearts")
+    .appendChild(heart);
+
+  setTimeout(function(){
+
+    heart.remove();
+
+  },4200);
+
+}
+
+</script>
+
+</body>
+</html>
