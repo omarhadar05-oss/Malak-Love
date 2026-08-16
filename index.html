@@ -2,16 +2,20 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Malak ❤️</title>
 
 <style>
 *{box-sizing:border-box}
 
-body{
+html,body{
   margin:0;
+  min-height:100%;
+}
+
+body{
   font-family:Arial,Tahoma,sans-serif;
-  background:linear-gradient(135deg,#fff0f6,#ffe2ed);
+  background:linear-gradient(135deg,#fff0f6,#ffe1ed);
   color:#4b2637;
   overflow-x:hidden;
 }
@@ -24,7 +28,7 @@ button{
 .page{
   display:none;
   min-height:100vh;
-  padding:25px 18px;
+  padding:25px 18px 40px;
   position:relative;
 }
 
@@ -49,7 +53,7 @@ button{
   display:block;
   margin:35px auto 10px;
   border:0;
-  background:white;
+  background:#fff;
   color:#d95787;
   padding:12px 28px;
   border-radius:50px;
@@ -57,69 +61,71 @@ button{
   box-shadow:0 8px 25px rgba(160,60,100,.15);
 }
 
-/* ================= STICKERS ================= */
+/* =========================
+   DECORATIONS
+========================= */
 
 .sticker{
   position:fixed;
-  z-index:5;
+  z-index:3;
   pointer-events:none;
-  user-select:none;
-  filter:drop-shadow(0 8px 10px rgba(80,30,60,.18));
+  filter:drop-shadow(0 7px 10px rgba(80,30,60,.15));
 }
 
 .sticker img{
   width:100%;
-  height:auto;
   display:block;
 }
 
 .kitty-left{
-  width:105px;
-  left:8px;
-  bottom:25px;
+  width:100px;
+  left:5px;
+  bottom:18px;
   transform:rotate(-7deg);
 }
 
 .kitty-right{
   width:95px;
-  right:8px;
-  top:90px;
+  right:5px;
+  top:85px;
   transform:rotate(7deg);
 }
 
 .batman-left{
   width:105px;
-  left:5px;
-  top:75px;
-  transform:rotate(-5deg);
+  left:4px;
+  top:65px;
+  transform:rotate(-6deg);
 }
 
 .batman-right{
   width:105px;
-  right:5px;
-  bottom:20px;
-  transform:rotate(5deg);
+  right:4px;
+  bottom:18px;
+  transform:rotate(6deg);
 }
 
-.decor-heart{
+.float-heart{
   position:fixed;
-  pointer-events:none;
   z-index:2;
-  color:#f277a4;
+  color:#f27aa5;
   font-size:25px;
-  animation:floatHeart 4s ease-in-out infinite;
+  pointer-events:none;
+  animation:float 4s ease-in-out infinite;
 }
 
-.h1{top:25%;left:7%}
-.h2{top:45%;right:7%;animation-delay:1s}
-.h3{bottom:25%;left:15%;animation-delay:2s}
+.fh1{left:8%;top:30%}
+.fh2{right:8%;top:48%;animation-delay:1s}
+.fh3{left:18%;bottom:25%;animation-delay:2s}
 
-@keyframes floatHeart{
-  0%,100%{transform:translateY(0) rotate(-5deg)}
-  50%{transform:translateY(-12px) rotate(8deg)}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
 }
 
-/* ================= LOCK ================= */
+/* =========================
+   LOCK
+========================= */
 
 #lock{
   position:fixed;
@@ -134,13 +140,11 @@ button{
 
 .lock-box{
   width:min(420px,100%);
-  background:#fff;
+  background:white;
   border-radius:30px;
   padding:35px 25px;
   text-align:center;
   box-shadow:0 20px 60px rgba(170,70,110,.2);
-  position:relative;
-  z-index:10;
 }
 
 .lock-icon{
@@ -184,7 +188,9 @@ button{
   margin-top:10px;
 }
 
-/* ================= QUESTION ================= */
+/* =========================
+   QUESTION
+========================= */
 
 #questionPage{
   align-items:center;
@@ -226,23 +232,23 @@ button{
   margin-top:30px;
 }
 
-.yes,
-.no{
+.yes,.no{
   padding:14px 30px;
   border-radius:50px;
   font-size:18px;
   font-weight:bold;
+  transition:.25s;
 }
 
 .yes{
   border:0;
   background:#e96899;
-  color:#fff;
+  color:white;
 }
 
 .no{
   border:2px solid #efa0bf;
-  background:#fff;
+  background:white;
   color:#d95787;
 }
 
@@ -253,7 +259,9 @@ button{
   font-weight:bold;
 }
 
-/* ================= GIFTS ================= */
+/* =========================
+   GIFTS
+========================= */
 
 #giftsPage{
   align-items:center;
@@ -309,7 +317,9 @@ button{
   color:#987080;
 }
 
-/* ================= PHOTOS ================= */
+/* =========================
+   PHOTOS
+========================= */
 
 .photo-grid{
   width:min(950px,100%);
@@ -342,15 +352,13 @@ button{
   display:block;
 }
 
-/* ================= MUSIC ================= */
-
-.music-page{
-  position:relative;
-}
+/* =========================
+   MUSIC
+========================= */
 
 .music-stage{
   width:min(1000px,100%);
-  min-height:700px;
+  min-height:720px;
   margin:auto;
   position:relative;
   display:flex;
@@ -366,7 +374,7 @@ button{
   background:
     repeating-radial-gradient(
       circle,
-      #111 0px,
+      #111 0,
       #111 4px,
       #292929 5px,
       #111 7px
@@ -387,11 +395,11 @@ button{
   border-radius:50%;
   object-fit:cover;
   border:4px solid white;
-  box-shadow:0 8px 25px rgba(0,0,0,.35);
+  box-shadow:0 8px 25px rgba(0,0,0,.3);
 }
 
 @keyframes spin{
-  from{transform:rotate(0deg)}
+  from{transform:rotate(0)}
   to{transform:rotate(360deg)}
 }
 
@@ -411,10 +419,10 @@ button{
 
 .p1{top:0;left:5%;transform:rotate(-9deg)}
 .p2{top:0;right:5%;transform:rotate(8deg)}
-.p3{top:190px;left:0;transform:rotate(7deg)}
-.p4{top:190px;right:0;transform:rotate(-8deg)}
-.p5{bottom:90px;left:7%;transform:rotate(-7deg)}
-.p6{bottom:90px;right:7%;transform:rotate(9deg)}
+.p3{top:185px;left:0;transform:rotate(7deg)}
+.p4{top:185px;right:0;transform:rotate(-8deg)}
+.p5{bottom:95px;left:6%;transform:rotate(-7deg)}
+.p6{bottom:95px;right:6%;transform:rotate(9deg)}
 .p7{bottom:0;left:30%;transform:rotate(5deg)}
 .p8{bottom:0;right:30%;transform:rotate(-6deg)}
 
@@ -425,26 +433,28 @@ button{
   margin-top:18px;
 }
 
-.local-audio-box{
+.audio-box{
   width:min(500px,90vw);
-  margin:5px auto;
+  margin:0 auto;
   text-align:center;
   position:relative;
   z-index:10;
 }
 
-.audio-controls{
+audio{
   width:100%;
   height:45px;
 }
 
-.song-status{
+.audio-note{
   color:#987080;
   font-size:14px;
   margin-top:8px;
 }
 
-/* ================= LETTER ================= */
+/* =========================
+   LETTER
+========================= */
 
 .letter-layout{
   width:min(1000px,100%);
@@ -484,7 +494,7 @@ button{
   background:
     repeating-radial-gradient(
       circle,
-      #111 0px,
+      #111 0,
       #111 3px,
       #292929 4px,
       #111 6px
@@ -495,6 +505,10 @@ button{
   box-shadow:0 15px 40px rgba(0,0,0,.3);
 }
 
+.small-record.playing{
+  animation:spin 5s linear infinite;
+}
+
 .small-cover{
   width:75px;
   height:75px;
@@ -502,7 +516,9 @@ button{
   object-fit:cover;
 }
 
-/* ================= HEART TRANSITION ================= */
+/* =========================
+   HEART TRANSITION
+========================= */
 
 #loveTransition{
   position:fixed;
@@ -518,46 +534,9 @@ button{
   display:flex;
 }
 
-.om-container{
-  position:relative;
-  display:flex;
-  align-items:center;
-  gap:25px;
-  direction:ltr;
-}
-
-.om-letter{
-  font-size:90px;
-  color:#d95787;
-  font-weight:bold;
-  position:relative;
-}
-
-.om-sticker{
-  position:absolute;
-  width:75px;
-  height:75px;
-  object-fit:contain;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:75px;
-}
-
 #heart{
   position:absolute;
   font-size:150px;
-  animation:heartAppear 1s ease;
-}
-
-@keyframes heartAppear{
-  from{
-    transform:scale(.2);
-    opacity:0;
-  }
-  to{
-    transform:scale(1);
-    opacity:1;
-  }
 }
 
 #heart.break{
@@ -578,11 +557,15 @@ button{
   }
 }
 
-#omContent{
+.om-container{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  direction:ltr;
   opacity:0;
 }
 
-#omContent.show{
+.om-container.show{
   animation:omShow 1s forwards;
 }
 
@@ -597,19 +580,31 @@ button{
   }
 }
 
-/* ================= MOBILE ================= */
+.om-letter{
+  position:relative;
+  color:#d95787;
+  font-size:90px;
+  font-weight:bold;
+}
+
+.om-sticker{
+  position:absolute;
+  width:75px;
+  height:75px;
+  object-fit:contain;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:72px;
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
-  .sticker{
-    opacity:.9;
-  }
-
   .kitty-left,
-  .kitty-right{
-    width:65px;
-  }
-
+  .kitty-right,
   .batman-left,
   .batman-right{
     width:65px;
@@ -688,7 +683,7 @@ button{
   .om-sticker{
     width:55px;
     height:55px;
-    bottom:52px;
+    bottom:50px;
   }
 }
 </style>
@@ -696,27 +691,31 @@ button{
 
 <body>
 
-<!-- STICKERS -->
+<!-- DECORATIONS -->
 
 <div class="sticker kitty-left">
-  <img src="kitty1.png" onerror="this.parentElement.style.display='none'">
+  <img src="kitty1.png"
+       onerror="this.parentElement.style.display='none'">
 </div>
 
 <div class="sticker kitty-right">
-  <img src="kitty2.png" onerror="this.parentElement.style.display='none'">
+  <img src="kitty2.png"
+       onerror="this.parentElement.style.display='none'">
 </div>
 
 <div class="sticker batman-left">
-  <img src="batman1.png" onerror="this.parentElement.style.display='none'">
+  <img src="batman1.png"
+       onerror="this.parentElement.style.display='none'">
 </div>
 
 <div class="sticker batman-right">
-  <img src="batman2.png" onerror="this.parentElement.style.display='none'">
+  <img src="batman2.png"
+       onerror="this.parentElement.style.display='none'">
 </div>
 
-<div class="decor-heart h1">♥</div>
-<div class="decor-heart h2">♥</div>
-<div class="decor-heart h3">♥</div>
+<div class="float-heart fh1">♥</div>
+<div class="float-heart fh2">♥</div>
+<div class="float-heart fh3">♥</div>
 
 
 <!-- LOCK -->
@@ -791,36 +790,31 @@ button{
 
     <div class="gifts">
 
-      <button class="gift" onclick="openPage('photosPage')">
-
+      <button
+        class="gift"
+        onclick="openPage('photosPage')"
+      >
         <div class="gift-icon">📸</div>
-
         <h2>صورنا</h2>
-
         <p>ذكرياتنا ❤️</p>
-
       </button>
 
-
-      <button class="gift" onclick="openPage('musicPage')">
-
+      <button
+        class="gift"
+        onclick="openPage('musicPage')"
+      >
         <div class="gift-icon">🎵</div>
-
         <h2>أغنيتنا</h2>
-
         <p>الأغنية ديالنا 🎶</p>
-
       </button>
 
-
-      <button class="gift" onclick="startLetter()">
-
+      <button
+        class="gift"
+        onclick="startLetter()"
+      >
         <div class="gift-icon">💌</div>
-
         <h2>رسالتي</h2>
-
         <p>شي حاجة من قلبي ❤️</p>
-
       </button>
 
     </div>
@@ -852,20 +846,18 @@ button{
   </div>
 
 
-  <div class="center">
+  <div class="audio-box">
 
-    <iframe
-      style="
-        margin-top:30px;
-        width:min(420px,90vw);
-        height:80px;
-        border:0;
-        border-radius:15px;
-      "
-      src="https://www.youtube.com/embed/wgXToIp_460?start=65&end=95"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
+    <audio
+      id="photosSong"
+      preload="metadata"
+      src="photos-song.m4a"
+      controls>
+    </audio>
+
+    <div class="audio-note">
+      المقطع ديال الصور ❤️ — 1:05 إلى 1:35
+    </div>
 
   </div>
 
@@ -882,7 +874,7 @@ button{
 
 <!-- OUR SONG -->
 
-<section id="musicPage" class="page music-page">
+<section id="musicPage" class="page">
 
   <h1 class="title">
     أغنيتنا 🎵❤️
@@ -926,11 +918,11 @@ button{
 
     <div>
 
-      <div id="record" class="record">
+      <div id="ourRecord" class="record">
 
         <img
           class="record-cover"
-          src="cover.jpg"
+          src="our-cover.jpg"
           alt="غلاف الأغنية"
         >
 
@@ -943,7 +935,7 @@ button{
         <br>
 
         <small>
-          المقطع 0:45 — 1:26
+          0:45 — 1:26
         </small>
 
       </div>
@@ -953,17 +945,17 @@ button{
   </div>
 
 
-  <div class="local-audio-box">
+  <div class="audio-box">
 
     <audio
       id="ourSong"
-      controls
-      preload="auto"
-      src="our-song.mp3">
+      preload="metadata"
+      src="our-song.m4a"
+      controls>
     </audio>
 
-    <div class="song-status">
-      المقطع ديالنا ❤️
+    <div class="audio-note">
+      إذا ما بداش أوتوماتيك، اضغطي Play ❤️
     </div>
 
   </div>
@@ -996,7 +988,9 @@ button{
         💌🌷
       </div>
 
-      <p>ملاك ❤️</p>
+      <p>
+        ملاك ❤️
+      </p>
 
       <p>
         بغيت غير نقولك بلي كنبغيك بزاف،
@@ -1037,11 +1031,12 @@ button{
 
     <div class="small-record-box">
 
-      <div class="small-record">
+      <div id="letterRecord" class="small-record">
 
         <img
           class="small-cover"
-          src="image2.jpeg"
+          src="letter-cover.jpg"
+          alt="غلاف الأغنية"
         >
 
       </div>
@@ -1050,17 +1045,16 @@ button{
         مقطع ليك ❤️
       </p>
 
-      <iframe
-        style="
-          width:100%;
-          height:80px;
-          border:0;
-          border-radius:15px;
-        "
-        src="https://www.youtube.com/embed/DhBS7gTvmfc?start=28&end=90"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
+      <audio
+        id="letterSong"
+        preload="metadata"
+        src="letter-song.m4a"
+        controls>
+      </audio>
+
+      <p style="font-size:13px;color:#987080">
+        0:28 — 1:30
+      </p>
 
     </div>
 
@@ -1081,17 +1075,11 @@ button{
 
 <div id="loveTransition">
 
-  <div id="heart">
-    ❤️
-  </div>
+  <div id="heart">❤️</div>
 
+  <div id="omContent" class="om-container">
 
-  <div
-    id="omContent"
-    class="om-container"
-  >
-
-    <!-- Batman فوق O -->
+    <!-- O + Batman -->
 
     <div class="om-letter">
 
@@ -1106,18 +1094,16 @@ button{
     </div>
 
 
-    <div
-      style="
-        font-size:65px;
-        color:#d95787;
-        font-weight:bold;
-      "
-    >
+    <div style="
+      font-size:65px;
+      color:#d95787;
+      font-weight:bold;
+    ">
       +
     </div>
 
 
-    <!-- Hello Kitty فوق M -->
+    <!-- M + Hello Kitty -->
 
     <div class="om-letter">
 
@@ -1138,7 +1124,43 @@ button{
 
 <script>
 
-/* ================= LOCK ================= */
+/* =========================
+   SETTINGS
+========================= */
+
+const START_OUR = 45;
+const END_OUR = 86;
+
+const START_PHOTOS = 65;
+const END_PHOTOS = 95;
+
+const START_LETTER = 28;
+const END_LETTER = 90;
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const ourSong =
+  document.getElementById("ourSong");
+
+const photosSong =
+  document.getElementById("photosSong");
+
+const letterSong =
+  document.getElementById("letterSong");
+
+const ourRecord =
+  document.getElementById("ourRecord");
+
+const letterRecord =
+  document.getElementById("letterRecord");
+
+
+/* =========================
+   LOCK
+========================= */
 
 function unlock(){
 
@@ -1149,11 +1171,11 @@ function unlock(){
     document.getElementById("error");
 
 
-  if(pin==="1614"){
+  if(pin === "1614"){
 
     document
       .getElementById("lock")
-      .style.display="none";
+      .style.display = "none";
 
     openPage("questionPage");
 
@@ -1164,117 +1186,145 @@ function unlock(){
 
     document
       .getElementById("pin")
-      .value="";
+      .value = "";
 
   }
-
 }
 
 
 document
 .getElementById("pin")
-.addEventListener(
-  "keydown",
-  function(e){
+.addEventListener("keydown",function(e){
 
-    if(e.key==="Enter"){
-      unlock();
-    }
-
+  if(e.key === "Enter"){
+    unlock();
   }
-);
+
+});
 
 
-/* ================= MUSIC ================= */
+/* =========================
+   HELPERS
+========================= */
 
-const ourSong =
-  document.getElementById("ourSong");
+function stopAllMusic(){
 
-const record =
-  document.getElementById("record");
+  [ourSong,photosSong,letterSong]
+    .forEach(function(audio){
 
-const SONG_START = 45;
-const SONG_END = 86;
+      if(!audio) return;
 
+      audio.pause();
 
-ourSong.addEventListener(
-  "play",
-  function(){
-
-    record.classList.add("playing");
-
-  }
-);
+  });
 
 
-ourSong.addEventListener(
-  "pause",
-  function(){
-
-    record.classList.remove("playing");
-
-  }
-);
+  ourRecord.classList.remove("playing");
+  letterRecord.classList.remove("playing");
+}
 
 
-ourSong.addEventListener(
-  "timeupdate",
-  function(){
+function prepareClip(audio,start){
 
-    if(
-      ourSong.currentTime >= SONG_END
-    ){
+  audio.currentTime = start;
 
-      ourSong.pause();
-
-      ourSong.currentTime =
-        SONG_START;
-
-    }
-
-  }
-);
+}
 
 
-function startOurSong(){
+function playClip(audio,start){
 
-  ourSong.currentTime =
-    SONG_START;
+  audio.currentTime = start;
 
-  const promise =
-    ourSong.play();
+  const p = audio.play();
 
-  if(promise){
-
-    promise.catch(function(){
-
-      /*
-        بعض أجهزة iPhone تمنع
-        التشغيل التلقائي بالصوت.
-        زر Play يبقى ظاهر.
-      */
-
+  if(p){
+    p.catch(function(){
+      /* iPhone may require manual Play */
     });
-
   }
 
 }
 
 
-/* ================= PAGES ================= */
+/* =========================
+   OUR SONG
+========================= */
 
-function stopMusic(){
+ourSong.addEventListener("play",function(){
 
-  ourSong.pause();
+  ourRecord.classList.add("playing");
 
-  record.classList.remove("playing");
+});
 
-}
+ourSong.addEventListener("pause",function(){
 
+  ourRecord.classList.remove("playing");
+
+});
+
+ourSong.addEventListener("timeupdate",function(){
+
+  if(ourSong.currentTime >= END_OUR){
+
+    ourSong.pause();
+    ourSong.currentTime = START_OUR;
+
+  }
+
+});
+
+
+/* =========================
+   PHOTOS SONG
+========================= */
+
+photosSong.addEventListener("timeupdate",function(){
+
+  if(photosSong.currentTime >= END_PHOTOS){
+
+    photosSong.pause();
+    photosSong.currentTime = START_PHOTOS;
+
+  }
+
+});
+
+
+/* =========================
+   LETTER SONG
+========================= */
+
+letterSong.addEventListener("play",function(){
+
+  letterRecord.classList.add("playing");
+
+});
+
+letterSong.addEventListener("pause",function(){
+
+  letterRecord.classList.remove("playing");
+
+});
+
+letterSong.addEventListener("timeupdate",function(){
+
+  if(letterSong.currentTime >= END_LETTER){
+
+    letterSong.pause();
+    letterSong.currentTime = START_LETTER;
+
+  }
+
+});
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
 
 function openPage(id){
 
-  stopMusic();
+  stopAllMusic();
 
 
   document
@@ -1300,61 +1350,99 @@ function openPage(id){
   window.scrollTo(0,0);
 
 
-  if(id==="musicPage"){
+  /*
+    نحاول التشغيل التلقائي عند دخول الصفحة.
+    إذا رفض Safari، يظهر زر Play.
+  */
+
+  if(id === "musicPage"){
 
     setTimeout(function(){
 
-      startOurSong();
+      playClip(
+        ourSong,
+        START_OUR
+      );
 
-    },300);
+    },250);
+
+  }
+
+
+  if(id === "photosPage"){
+
+    setTimeout(function(){
+
+      playClip(
+        photosSong,
+        START_PHOTOS
+      );
+
+    },250);
+
+  }
+
+
+  if(id === "letterPage"){
+
+    setTimeout(function(){
+
+      playClip(
+        letterSong,
+        START_LETTER
+      );
+
+    },250);
 
   }
 
 }
 
 
-/* ================= QUESTION ================= */
+/* =========================
+   QUESTION
+========================= */
 
-let yesScale=1;
+let yesScale = 1;
 
 
 document
 .getElementById("no")
-.addEventListener(
-  "click",
-  function(){
+.addEventListener("click",function(){
 
-    yesScale += .3;
+  yesScale += .3;
 
-    document
-      .getElementById("yes")
-      .style.transform =
-      "scale("+Math.min(yesScale,4)+")";
+  document
+    .getElementById("yes")
+    .style.transform =
+    "scale("+Math.min(yesScale,4)+")";
 
-    document
-      .getElementById("answerText")
-      .textContent =
-      "لااا 😭 جربي YES ❤️";
 
-  }
-);
+  document
+    .getElementById("answerText")
+    .textContent =
+    "لااا 😭 جربي YES ❤️";
+
+});
 
 
 document
 .getElementById("yes")
-.addEventListener(
-  "click",
-  function(){
+.addEventListener("click",function(){
 
-    openPage("giftsPage");
+  openPage("giftsPage");
 
-  }
-);
+});
 
 
-/* ================= LETTER ================= */
+/* =========================
+   LETTER TRANSITION
+========================= */
 
 function startLetter(){
+
+  stopAllMusic();
+
 
   const transition =
     document.getElementById("loveTransition");
@@ -1367,8 +1455,6 @@ function startLetter(){
 
 
   transition.classList.add("show");
-
-  heart.style.display="block";
 
   heart.classList.remove("break");
 
