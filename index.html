@@ -16,7 +16,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ---------- القفل ---------- */
+button{font-family:inherit}
 
 .lock{
   position:fixed;
@@ -25,7 +25,7 @@ body{
   align-items:center;
   justify-content:center;
   background:linear-gradient(135deg,#ffe3ee,#fff8fb);
-  z-index:50;
+  z-index:100;
   padding:24px;
 }
 
@@ -38,18 +38,14 @@ body{
   box-shadow:0 18px 60px #c65d8a33;
 }
 
-.heart{
-  font-size:52px;
-}
+.heart{font-size:52px}
 
 .card h1{
   margin:8px 0;
   font-size:28px;
 }
 
-.card p{
-  color:#8b6274;
-}
+.card p{color:#8b6274}
 
 .pin{
   font-size:30px;
@@ -73,6 +69,7 @@ body{
   font-size:18px;
   font-weight:700;
   padding:13px 30px;
+  cursor:pointer;
 }
 
 .err{
@@ -81,32 +78,30 @@ body{
   margin-top:8px;
 }
 
-/* ---------- الصفحات ---------- */
-
 .page{
   display:none;
   min-height:100vh;
-  padding:40px 20px;
+  padding:35px 20px;
 }
 
-.page.active{
-  display:block;
-}
+.page.active{display:block}
 
 .center{
-  text-align:center;
   max-width:900px;
   margin:auto;
+  text-align:center;
 }
 
-/* ---------- سؤال واش كتبغيني ---------- */
+/* السؤال */
 
 .question{
-  display:flex;
+  min-height:100vh;
+  display:none;
   align-items:center;
   justify-content:center;
-  min-height:100vh;
 }
+
+.question.active{display:flex}
 
 .question-box{
   background:white;
@@ -162,14 +157,16 @@ body{
   min-height:30px;
 }
 
-/* ---------- صفحة الهدايا ---------- */
+/* الهدايا */
 
 .gifts{
   min-height:100vh;
-  display:flex;
+  display:none;
   align-items:center;
   justify-content:center;
 }
+
+.gifts.active{display:flex}
 
 .gift-container{
   width:min(950px,100%);
@@ -203,13 +200,10 @@ body{
 }
 
 .gift:hover{
-  transform:translateY(-10px) rotate(-1deg);
-  box-shadow:0 20px 50px #9b416633;
+  transform:translateY(-10px);
 }
 
-.gift-icon{
-  font-size:60px;
-}
+.gift-icon{font-size:60px}
 
 .gift h2{
   margin:12px 0 5px;
@@ -221,7 +215,7 @@ body{
   color:#9a6b7e;
 }
 
-/* ---------- الصفحات الداخلية ---------- */
+/* العناوين */
 
 .inner-title{
   text-align:center;
@@ -243,32 +237,31 @@ body{
   box-shadow:0 5px 20px #9b416622;
 }
 
-/* ---------- الصور ---------- */
+/* الصور */
 
 .photo-grid{
   max-width:950px;
   margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
   gap:25px;
 }
 
 .photo{
   background:white;
-  padding:10px 10px 28px;
+  padding:10px 10px 25px;
   box-shadow:0 10px 30px #9b416633;
   transform:rotate(var(--r));
-  border-radius:3px;
 }
 
 .photo img{
   width:100%;
-  height:280px;
+  height:270px;
   object-fit:cover;
   display:block;
 }
 
-/* ---------- صفحة الأغنية ---------- */
+/* الأسطوانة */
 
 .music-page{
   position:relative;
@@ -286,35 +279,79 @@ body{
 }
 
 .song-box{
-  width:min(560px,90%);
-  background:white;
-  padding:18px;
-  border-radius:25px;
-  box-shadow:0 18px 55px #9b416633;
+  width:min(500px,80%);
   position:relative;
   z-index:5;
+  text-align:center;
 }
 
-.song-box iframe{
-  width:100%;
-  height:315px;
-  border:0;
-  border-radius:18px;
+.record{
+  width:330px;
+  height:330px;
+  margin:auto;
+  border-radius:50%;
+  background:
+    repeating-radial-gradient(
+      circle,
+      #111 0px,
+      #111 4px,
+      #292929 5px,
+      #111 7px
+    );
+  box-shadow:
+    0 20px 50px #0005,
+    inset 0 0 25px #000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:spin 5s linear infinite;
+}
+
+.record::before{
+  content:"";
+  width:112px;
+  height:112px;
+  border-radius:50%;
+  background:#ef6f9f;
+  position:absolute;
+}
+
+.cover{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  object-fit:cover;
+  position:relative;
+  z-index:2;
+}
+
+.record-hole{
+  position:absolute;
+  width:10px;
+  height:10px;
+  background:white;
+  border-radius:50%;
+  z-index:3;
+}
+
+@keyframes spin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
 
 .song-name{
   text-align:center;
   font-weight:800;
   color:#d95386;
-  font-size:20px;
-  margin-top:15px;
+  font-size:21px;
+  margin-top:25px;
 }
 
-/* الصور حول الأغنية */
+/* الصور حول الأسطوانة */
 
 .music-photo{
   position:absolute;
-  width:115px;
+  width:110px;
   background:white;
   padding:7px 7px 18px;
   box-shadow:0 10px 25px #9b416644;
@@ -323,52 +360,18 @@ body{
 
 .music-photo img{
   width:100%;
-  height:125px;
+  height:120px;
   object-fit:cover;
 }
 
-.m1{top:20px;left:8%;transform:rotate(-10deg)}
-.m2{top:80px;right:6%;transform:rotate(9deg)}
-.m3{bottom:55px;left:5%;transform:rotate(8deg)}
-.m4{bottom:25px;right:9%;transform:rotate(-8deg)}
-.m5{top:5px;left:40%;transform:rotate(5deg)}
-.m6{bottom:5px;right:40%;transform:rotate(-5deg)}
+.m1{top:15px;left:5%;transform:rotate(-10deg)}
+.m2{top:70px;right:5%;transform:rotate(9deg)}
+.m3{bottom:50px;left:4%;transform:rotate(8deg)}
+.m4{bottom:25px;right:6%;transform:rotate(-8deg)}
+.m5{top:0;left:42%;transform:rotate(5deg)}
+.m6{bottom:0;right:42%;transform:rotate(-5deg)}
 
-@media(max-width:650px){
-
-  .gift-row{
-    flex-direction:column;
-  }
-
-  .gift{
-    width:90%;
-  }
-
-  .music-area{
-    min-height:700px;
-  }
-
-  .music-photo{
-    width:75px;
-  }
-
-  .music-photo img{
-    height:85px;
-  }
-
-  .m1{top:15px;left:3%}
-  .m2{top:70px;right:3%}
-  .m3{bottom:80px;left:2%}
-  .m4{bottom:50px;right:3%}
-  .m5{top:5px;left:38%}
-  .m6{bottom:10px;right:38%}
-
-  .song-box iframe{
-    height:240px;
-  }
-}
-
-/* ---------- الرسالة ---------- */
+/* رسالة */
 
 .letter{
   max-width:700px;
@@ -387,25 +390,125 @@ body{
   margin-bottom:10px;
 }
 
+/* الأسطوانة الصغيرة للرسالة */
+
+.letter-layout{
+  max-width:1000px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:40px;
+  direction:ltr;
+}
+
+.letter-music{
+  width:230px;
+  flex-shrink:0;
+  text-align:center;
+}
+
+.small-record{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  margin:auto;
+  background:
+    repeating-radial-gradient(
+      circle,
+      #111 0px,
+      #111 3px,
+      #292929 4px,
+      #111 6px
+    );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:spin 5s linear infinite;
+  box-shadow:0 15px 35px #0004;
+}
+
+.small-cover{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.letter-content{
+  flex:1;
+  direction:rtl;
+}
+
 footer{
   text-align:center;
-  padding:30px;
+  padding:35px;
   color:#9a6b7e;
 }
 
-/* ---------- القلوب ---------- */
+/* شاشة القلب */
+
+.heart-transition{
+  position:fixed;
+  inset:0;
+  background:#fff1f6;
+  z-index:200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+
+.heart-transition.show{
+  display:flex;
+}
+
+.big-heart{
+  font-size:150px;
+  animation:heartBeat 1s ease-in-out;
+}
+
+@keyframes heartBeat{
+  0%{transform:scale(.4);opacity:0}
+  50%{transform:scale(1.15);opacity:1}
+  100%{transform:scale(1);opacity:1}
+}
+
+.cracked{
+  animation:crack 1.2s forwards;
+}
+
+@keyframes crack{
+  0%{transform:scale(1);opacity:1}
+  60%{transform:scale(1.2) rotate(4deg)}
+  100%{transform:scale(1.7);opacity:0}
+}
+
+.om{
+  position:absolute;
+  font-size:55px;
+  font-weight:900;
+  color:#d95386;
+  opacity:0;
+}
+
+.om.show{
+  animation:showOM 1.2s forwards;
+}
+
+@keyframes showOM{
+  from{transform:scale(.3);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
 
 #hearts{
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:100;
+  z-index:300;
 }
 
 .float{
   position:absolute;
   animation:up 4s linear forwards;
-  font-size:24px;
 }
 
 @keyframes up{
@@ -418,12 +521,69 @@ footer{
     opacity:0;
   }
 }
+
+@media(max-width:650px){
+
+  .gift-row{
+    flex-direction:column;
+  }
+
+  .gift{
+    width:90%;
+  }
+
+  .music-area{
+    min-height:680px;
+  }
+
+  .music-photo{
+    width:70px;
+  }
+
+  .music-photo img{
+    height:80px;
+  }
+
+  .record{
+    width:250px;
+    height:250px;
+  }
+
+  .cover{
+    width:82px;
+    height:82px;
+  }
+
+  .m1{top:20px;left:2%}
+  .m2{top:70px;right:2%}
+  .m3{bottom:80px;left:2%}
+  .m4{bottom:55px;right:2%}
+  .m5{top:0;left:38%}
+  .m6{bottom:10px;right:38%}
+
+  .letter-layout{
+    flex-direction:column;
+  }
+
+  .letter-music{
+    order:2;
+  }
+
+  .letter-content{
+    order:1;
+  }
+
+  .small-record{
+    width:150px;
+    height:150px;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<!-- ================= القفل ================= -->
+<!-- القفل -->
 
 <div class="lock" id="lock">
 
@@ -454,7 +614,7 @@ footer{
 </div>
 
 
-<!-- ================= السؤال ================= -->
+<!-- السؤال -->
 
 <section class="page question" id="questionPage">
 
@@ -485,7 +645,7 @@ footer{
 </section>
 
 
-<!-- ================= الهدايا ================= -->
+<!-- الهدايا -->
 
 <section class="page gifts" id="giftsPage">
 
@@ -497,7 +657,6 @@ footer{
 
     <div class="gift-row">
 
-      <!-- اليسار -->
       <button class="gift" onclick="showPage('photosPage')">
 
         <div class="gift-icon">📸</div>
@@ -508,8 +667,6 @@ footer{
 
       </button>
 
-
-      <!-- الوسط -->
       <button class="gift" onclick="showPage('musicPage')">
 
         <div class="gift-icon">🎵</div>
@@ -520,9 +677,7 @@ footer{
 
       </button>
 
-
-      <!-- اليمين -->
-      <button class="gift" onclick="showPage('letterPage')">
+      <button class="gift" onclick="startLetter()">
 
         <div class="gift-icon">💌</div>
 
@@ -539,7 +694,7 @@ footer{
 </section>
 
 
-<!-- ================= صفحة الصور ================= -->
+<!-- صفحة الصور -->
 
 <section class="page" id="photosPage">
 
@@ -552,35 +707,35 @@ footer{
     <div class="photo-grid">
 
       <div class="photo" style="--r:-3deg">
-        <img src="images/image1.jpeg">
+        <img src="image1.jpeg" alt="صورة">
       </div>
 
       <div class="photo" style="--r:3deg">
-        <img src="images/image2.jpeg">
+        <img src="image2.jpeg" alt="صورة">
       </div>
 
       <div class="photo" style="--r:-2deg">
-        <img src="images/image3.jpeg">
+        <img src="image3.jpeg" alt="صورة">
       </div>
 
       <div class="photo" style="--r:4deg">
-        <img src="images/image4.jpeg">
+        <img src="image4.jpeg" alt="صورة">
       </div>
 
       <div class="photo" style="--r:-4deg">
-        <img src="images/image5.jpeg">
+        <img src="image5.jpeg" alt="صورة">
       </div>
 
       <div class="photo" style="--r:2deg">
-        <img src="images/image6.jpeg">
+        <img src="image6.jpeg" alt="صورة">
       </div>
 
       <div class="photo" style="--r:-2deg">
-        <img src="images/image7.jpeg">
+        <img src="image7.jpeg" alt="صورة">
       </div>
 
       <div class="photo" style="--r:3deg">
-        <img src="images/image8.jpeg">
+        <img src="image8.jpeg" alt="صورة">
       </div>
 
     </div>
@@ -594,7 +749,7 @@ footer{
 </section>
 
 
-<!-- ================= صفحة الأغنية ================= -->
+<!-- صفحة الأغنية -->
 
 <section class="page music-page" id="musicPage">
 
@@ -604,46 +759,62 @@ footer{
 
   <div class="music-area">
 
-    <!-- صور حول الأغنية -->
-
     <div class="music-photo m1">
-      <img src="images/image1.jpeg">
+      <img src="image1.jpeg">
     </div>
 
     <div class="music-photo m2">
-      <img src="images/image2.jpeg">
+      <img src="image2.jpeg">
     </div>
 
     <div class="music-photo m3">
-      <img src="images/image3.jpeg">
+      <img src="image3.jpeg">
     </div>
 
     <div class="music-photo m4">
-      <img src="images/image4.jpeg">
+      <img src="image4.jpeg">
     </div>
 
     <div class="music-photo m5">
-      <img src="images/image5.jpeg">
+      <img src="image5.jpeg">
     </div>
 
     <div class="music-photo m6">
-      <img src="images/image6.jpeg">
+      <img src="image6.jpeg">
     </div>
-
-
-    <!-- الأغنية -->
 
     <div class="song-box">
 
-      <iframe
-        src="https://www.youtube.com/embed/ZvlzB5gUD-g"
-        title="أغنيتنا"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
+      <div class="record">
+
+        <img
+          class="cover"
+          src="image1.jpeg"
+          alt="غلاف الأغنية"
+        >
+
+        <div class="record-hole"></div>
+
+      </div>
 
       <div class="song-name">
-        الأغنية اللي اخترتها ليك ❤️🎶
+        أغنيتنا ❤️🎶
+      </div>
+
+      <div style="margin-top:15px;color:#9a6b7e">
+        المقطع: 0:45 — 1:26
+      </div>
+
+      <!-- YouTube -->
+      <div style="margin-top:20px">
+        <iframe
+          id="musicPlayer"
+          width="0"
+          height="0"
+          src="https://www.youtube.com/embed/ZvlzB5gUD-g?start=45&end=86"
+          allow="autoplay; encrypted-media"
+          style="border:0">
+        </iframe>
       </div>
 
     </div>
@@ -657,196 +828,24 @@ footer{
 </section>
 
 
-<!-- ================= صفحة الرسالة ================= -->
+<!-- صفحة الرسالة -->
 
 <section class="page" id="letterPage">
 
-  <div class="center">
+  <h1 class="inner-title">
+    رسالة ليك 💌
+  </h1>
 
-    <h1 class="inner-title">
-      رسالة ليك 💌
-    </h1>
+  <div class="letter-layout">
 
-    <div class="letter">
+    <div class="letter-content">
 
-      <div class="emoji">💌🌷</div>
+      <div class="letter">
 
-      ملاك ❤️
+        <div class="emoji">💌🌷</div>
 
-      <br><br>
+        ملاك ❤️
 
-      بغيت غير نقولك بلي كنبغيك بزاف، ويمكن ما كنعرفش ديما نعبر ليك على كلشي اللي كاين فقلبي، ولكن نتي عندك بلاصة كبيرة عندي وماشي أي وحدة تقدر تاخدها.
+        <br><br>
 
-      <br><br>
-
-      كيعجبني فيك كلشي، ضحكتك، طريقتك، وحتى التفاصيل الصغيرة اللي يمكن نتي ما كتعطيهاش أهمية، أنا كنبقى نتفكرها.
-
-      <br><br>
-
-      وبغيت نبقى ديما حدّاك، نفرح معاك ونوقف معاك فكل وقت، وإن شاء الله ربي يطول لينا فالعمر ونبقاو ديما مجموعين وما يفرق بيناتنا والو.
-
-      <br><br>
-
-      المهم... بغيتك تعرفي غير حاجة وحدة:
-
-      <br>
-
-      <strong>
-        كنبغيك بزاف بزاف، ونتي بالنسبة ليا ماشي شي وحدة عادية ❤️
-      </strong>
-
-      <br><br>
-
-      ديما ديالك ❤️🌷
-
-    </div>
-
-    <button class="back" onclick="showPage('giftsPage')">
-      ← رجوع للهدايا
-    </button>
-
-  </div>
-
-  <footer>
-    صُنعت بحب ❤️
-  </footer>
-
-</section>
-
-
-<div id="hearts"></div>
-
-
-<script>
-
-/* ================= فتح القفل ================= */
-
-function unlock(){
-
-  const pin = document.getElementById("pin").value;
-
-  const err = document.getElementById("err");
-
-  if(pin === "1614"){
-
-    document.getElementById("lock").style.display = "none";
-
-    showPage("questionPage");
-
-  }else{
-
-    err.textContent = "الرقم مو صحيح 😭❤️";
-
-    document.getElementById("pin").value = "";
-
-  }
-
-}
-
-
-/* Enter لفتح القفل */
-
-document.getElementById("pin").addEventListener("keydown",function(e){
-
-  if(e.key === "Enter"){
-    unlock();
-  }
-
-});
-
-
-/* ================= التنقل بين الصفحات ================= */
-
-function showPage(id){
-
-  document.querySelectorAll(".page").forEach(page=>{
-    page.classList.remove("active");
-  });
-
-  document.getElementById(id).classList.add("active");
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* ================= سؤال YES / NO ================= */
-
-const yes = document.getElementById("yes");
-
-const no = document.getElementById("no");
-
-const reply = document.getElementById("reply");
-
-let scale = 1;
-
-
-/* زر NO */
-
-no.addEventListener("click",()=>{
-
-  scale = Math.min(scale + 0.3,5);
-
-  yes.style.transform = `scale(${scale})`;
-
-  no.style.transform =
-    `scale(${Math.max(.45,1-(scale-1)*.13)})`;
-
-  reply.textContent = "لااا 😭 اضغطي YES ❤️";
-
-});
-
-
-/* زر YES */
-
-yes.addEventListener("click",()=>{
-
-  for(let i=0;i<35;i++){
-
-    setTimeout(spawnHeart,i*40);
-
-  }
-
-  setTimeout(()=>{
-
-    showPage("giftsPage");
-
-  },700);
-
-});
-
-
-/* ================= القلوب ================= */
-
-function spawnHeart(){
-
-  const h = document.createElement("div");
-
-  h.className = "float";
-
-  h.textContent =
-    ["❤️","💗","💕","🌷","💖"]
-    [Math.floor(Math.random()*5)];
-
-  h.style.left = Math.random()*100 + "vw";
-
-  h.style.bottom = "-30px";
-
-  h.style.fontSize =
-    (18 + Math.random()*25) + "px";
-
-  document.getElementById("hearts").appendChild(h);
-
-  setTimeout(()=>{
-    h.remove();
-  },4100);
-
-}
-
-</script>
-
-</body>
-</html>
+        بغيت غير نقولك بلي كنبغ
